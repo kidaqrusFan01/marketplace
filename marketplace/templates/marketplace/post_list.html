@@ -1,1082 +1,1122 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Corazon Marketplace — Buy, Sell & Recruit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Corazon Marketplace — Buy, Sell &amp; Recruit</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --primary: #FF6B00;
-    --primary-dark: #CC5500;
-    --primary-light: #FFF0E6;
-    --secondary: #0A1628;
-    --accent: #00C896;
-    --accent2: #FFD700;
-    --white: #FFFFFF;
-    --gray-50: #F9FAFB;
-    --gray-100: #F3F4F6;
-    --gray-200: #E5E7EB;
-    --gray-400: #9CA3AF;
-    --gray-600: #4B5563;
-    --gray-800: #1F2937;
-    --red: #EF4444;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-    --shadow: 0 4px 16px rgba(0,0,0,0.10);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
-    --radius: 12px;
-    --radius-lg: 20px;
-  }
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--gray-50); color: var(--secondary); overflow-x: hidden; }
+:root {
+--primary: #FF6B00;
+--primary-dark: #CC5500;
+--primary-light: #FFF0E6;
+--secondary: #0A1628;
+--accent: #00C896;
+--accent2: #FFD700;
+--white: #FFFFFF;
+--gray-50: #F9FAFB;
+--gray-100: #F3F4F6;
+--gray-200: #E5E7EB;
+--gray-400: #9CA3AF;
+--gray-600: #4B5563;
+--gray-800: #1F2937;
+--red: #EF4444;
+--shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+--shadow: 0 4px 16px rgba(0,0,0,0.10);
+--shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
+--radius: 12px;
+--radius-lg: 20px;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+body { font-family: 'DM Sans', sans-serif; background: var(--gray-50); color: var(--secondary); overflow-x: hidden; }
 
-  /* ── UTILITY ── */
-  .hidden { display: none !important; }
-  .badge { display:inline-block; padding:2px 10px; border-radius:99px; font-size:11px; font-weight:600; }
-  .badge-new { background:#E0F7FA; color:#0097A7; }
-  .badge-hot { background:#FFE0B2; color:#E65100; }
-  .badge-sale { background:#FCE4EC; color:#C62828; }
-  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:10px 22px; border-radius:8px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:14px; cursor:pointer; border:none; transition:all .2s; text-decoration:none; -webkit-tap-highlight-color:transparent; }
-  .btn-primary { background:var(--primary); color:#fff; }
-  .btn-primary:active { background:var(--primary-dark); }
-  .btn-primary:hover { background:var(--primary-dark); transform:translateY(-1px); box-shadow:0 4px 12px rgba(255,107,0,.35); }
-  .btn-outline { background:transparent; color:var(--primary); border:2px solid var(--primary); }
-  .btn-outline:hover { background:var(--primary-light); }
-  .btn-dark { background:var(--secondary); color:#fff; }
-  .btn-dark:hover { background:#1a2f4e; }
-  .btn-sm { padding:7px 14px; font-size:13px; }
-  .btn-green { background:var(--accent); color:#fff; }
-  .btn-green:hover { background:#00A87E; }
-  .star { color:var(--accent2); }
-  input, select, textarea {
-    font-family:'DM Sans',sans-serif; font-size:16px;
-    padding:12px 14px; border:1.5px solid var(--gray-200);
-    border-radius:8px; width:100%; outline:none;
-    transition:border .2s; background:#fff;
-    -webkit-appearance:none; appearance:none;
-  }
-  input:focus, select:focus, textarea:focus { border-color:var(--primary); }
-  label { font-size:13px; font-weight:600; color:var(--gray-600); margin-bottom:4px; display:block; }
-  .form-group { margin-bottom:16px; }
-  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+/* ── UTILITY ── */
+.hidden { display: none !important; }
+.badge { display:inline-block; padding:2px 10px; border-radius:99px; font-size:11px; font-weight:600; }
+.badge-new { background:#E0F7FA; color:#0097A7; }
+.badge-hot { background:#FFE0B2; color:#E65100; }
+.badge-sale { background:#FCE4EC; color:#C62828; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:10px 22px; border-radius:8px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:14px; cursor:pointer; border:none; transition:all .2s; text-decoration:none; -webkit-tap-highlight-color:transparent; min-height:44px; }
+.btn-primary { background:var(--primary); color:#fff; }
+.btn-primary:active { background:var(--primary-dark); }
+.btn-primary:hover { background:var(--primary-dark); transform:translateY(-1px); box-shadow:0 4px 12px rgba(255,107,0,.35); }
+.btn-outline { background:transparent; color:var(--primary); border:2px solid var(--primary); }
+.btn-outline:hover { background:var(--primary-light); }
+.btn-dark { background:var(--secondary); color:#fff; }
+.btn-dark:hover { background:#1a2f4e; }
+.btn-sm { padding:7px 14px; font-size:13px; min-height:36px; }
+.btn-green { background:var(--accent); color:#fff; }
+.btn-green:hover { background:#00A87E; }
+.star { color:var(--accent2); }
+input, select, textarea {
+  font-family:'DM Sans',sans-serif; font-size:16px;
+  padding:12px 14px; border:1.5px solid var(--gray-200);
+  border-radius:8px; width:100%; outline:none;
+  transition:border .2s; background:#fff;
+  -webkit-appearance:none; appearance:none;
+}
+input:focus, select:focus, textarea:focus { border-color:var(--primary); }
+label { font-size:13px; font-weight:600; color:var(--gray-600); margin-bottom:4px; display:block; }
+.form-group { margin-bottom:16px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 
-  /* ── TOP BAR (hidden on mobile) ── */
-  .topbar { background:var(--secondary); padding:7px 0; font-size:12px; color:rgba(255,255,255,.65); }
-  .topbar-inner { max-width:1280px; margin:auto; padding:0 16px; display:flex; justify-content:space-between; align-items:center; }
-  .topbar a { color:rgba(255,255,255,.65); text-decoration:none; }
-  .topbar a:hover { color:#fff; }
-  .topbar-links { display:flex; gap:20px; }
+/* ── TOP BAR ── */
+.topbar { background:var(--secondary); padding:7px 0; font-size:12px; color:rgba(255,255,255,.65); }
+.topbar-inner { max-width:1280px; margin:auto; padding:0 16px; display:flex; justify-content:space-between; align-items:center; }
+.topbar a { color:rgba(255,255,255,.65); text-decoration:none; }
+.topbar a:hover { color:#fff; }
+.topbar-links { display:flex; gap:20px; }
 
-  /* ── HEADER ── */
-  header { background:var(--secondary); padding:12px 0; position:sticky; top:0; z-index:100; box-shadow:0 2px 12px rgba(0,0,0,.2); }
-  .header-inner { max-width:1280px; margin:auto; padding:0 16px; display:flex; align-items:center; gap:12px; }
-  .logo { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:#fff; cursor:pointer; flex-shrink:0; line-height:1; }
-  .logo span { color:var(--primary); }
-  .search-bar { flex:1; display:flex; background:#fff; border-radius:8px; overflow:hidden; min-width:0; }
-  .search-cat { display:none; }
-  .search-bar input { border:none; border-radius:0; font-size:14px; flex:1; padding:10px 12px; min-width:0; }
-  .search-bar input:focus { box-shadow:none; }
-  .search-btn { background:var(--primary); color:#fff; border:none; padding:0 14px; cursor:pointer; font-size:16px; flex-shrink:0; }
-  .header-actions { display:flex; gap:6px; flex-shrink:0; }
-  .header-btn { background:transparent; border:1.5px solid rgba(255,255,255,.2); color:#fff; padding:8px 10px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; -webkit-tap-highlight-color:transparent; }
-  .header-btn:active { background:rgba(255,255,255,.15); }
-  .cart-btn { position:relative; }
-  .cart-count { position:absolute; top:-7px; right:-7px; background:var(--primary); color:#fff; font-size:10px; font-weight:700; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
-  /* Mobile menu toggle */
-  .menu-toggle { display:none; background:transparent; border:1.5px solid rgba(255,255,255,.2); color:#fff; padding:8px 10px; border-radius:8px; cursor:pointer; font-size:18px; flex-shrink:0; }
+/* ── HEADER ── */
+header { background:var(--secondary); padding:10px 0; position:sticky; top:0; z-index:100; box-shadow:0 2px 12px rgba(0,0,0,.2); }
+.header-inner { max-width:1280px; margin:auto; padding:0 12px; display:flex; align-items:center; gap:8px; }
+.logo { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:#fff; cursor:pointer; flex-shrink:0; line-height:1; white-space:nowrap; }
+.logo span { color:var(--primary); }
+.search-bar { flex:1; display:flex; background:#fff; border-radius:8px; overflow:hidden; min-width:0; }
+.search-cat { display:none; }
+.search-bar input { border:none; border-radius:0; font-size:16px; flex:1; padding:9px 10px; min-width:0; }
+.search-bar input:focus { box-shadow:none; }
+.search-btn { background:var(--primary); color:#fff; border:none; padding:0 12px; cursor:pointer; font-size:16px; flex-shrink:0; min-width:44px; }
+.header-actions { display:flex; gap:5px; flex-shrink:0; }
+.header-btn { background:transparent; border:1.5px solid rgba(255,255,255,.2); color:#fff; padding:8px 10px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; -webkit-tap-highlight-color:transparent; min-height:40px; }
+.header-btn:active { background:rgba(255,255,255,.15); }
+.cart-btn { position:relative; }
+.cart-count { position:absolute; top:-7px; right:-7px; background:var(--primary); color:#fff; font-size:10px; font-weight:700; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.menu-toggle { display:none; background:transparent; border:1.5px solid rgba(255,255,255,.2); color:#fff; padding:8px 10px; border-radius:8px; cursor:pointer; font-size:18px; flex-shrink:0; min-height:40px; min-width:40px; }
 
-  /* ── NAV ── */
-  nav { background:#1a2f4e; border-bottom:1px solid rgba(255,255,255,.08); }
-  .nav-inner { max-width:1280px; margin:auto; padding:0 16px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
-  .nav-inner::-webkit-scrollbar { display:none; }
-  .nav-item { color:rgba(255,255,255,.75); padding:10px 12px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all .2s; -webkit-tap-highlight-color:transparent; }
-  .nav-item:hover, .nav-item.active { color:#fff; border-bottom-color:var(--primary); }
+/* ── NAV ── */
+nav { background:#1a2f4e; border-bottom:1px solid rgba(255,255,255,.08); }
+.nav-inner { max-width:1280px; margin:auto; padding:0 12px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; -webkit-overflow-scrolling:touch; }
+.nav-inner::-webkit-scrollbar { display:none; }
+.nav-item { color:rgba(255,255,255,.75); padding:10px 12px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all .2s; -webkit-tap-highlight-color:transparent; min-height:44px; display:flex; align-items:center; }
+.nav-item:hover, .nav-item.active { color:#fff; border-bottom-color:var(--primary); }
 
-  /* ── MOBILE NAV DRAWER ── */
-  .mobile-nav-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:150; }
-  .mobile-nav-overlay.open { display:block; }
-  .mobile-drawer { position:fixed; top:0; left:0; width:280px; height:100vh; background:#fff; z-index:160; transform:translateX(-100%); transition:transform .3s; overflow-y:auto; }
-  .mobile-drawer.open { transform:translateX(0); }
-  .drawer-header { background:var(--secondary); padding:20px 16px; display:flex; align-items:center; justify-content:space-between; }
-  .drawer-logo { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:#fff; }
-  .drawer-logo span { color:var(--primary); }
-  .drawer-close { background:none; border:none; color:#fff; font-size:22px; cursor:pointer; }
-  .drawer-section { padding:16px; border-bottom:1px solid var(--gray-100); }
-  .drawer-section-title { font-size:11px; font-weight:700; color:var(--gray-400); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
-  .drawer-item { display:flex; align-items:center; gap:12px; padding:12px; border-radius:8px; cursor:pointer; font-size:14px; font-weight:500; color:var(--gray-800); -webkit-tap-highlight-color:transparent; }
-  .drawer-item:active { background:var(--gray-100); }
-  .drawer-item .di-icon { font-size:20px; width:28px; text-align:center; }
+/* ── MOBILE NAV DRAWER ── */
+.mobile-nav-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:150; }
+.mobile-nav-overlay.open { display:block; }
+.mobile-drawer { position:fixed; top:0; left:0; width:min(300px,85vw); height:100vh; background:#fff; z-index:160; transform:translateX(-100%); transition:transform .3s; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+.mobile-drawer.open { transform:translateX(0); }
+.drawer-header { background:var(--secondary); padding:20px 16px; display:flex; align-items:center; justify-content:space-between; }
+.drawer-logo { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:#fff; }
+.drawer-logo span { color:var(--primary); }
+.drawer-close { background:none; border:none; color:#fff; font-size:22px; cursor:pointer; min-width:44px; min-height:44px; display:flex; align-items:center; justify-content:center; }
+.drawer-section { padding:14px 16px; border-bottom:1px solid var(--gray-100); }
+.drawer-section-title { font-size:11px; font-weight:700; color:var(--gray-400); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.drawer-item { display:flex; align-items:center; gap:12px; padding:13px 10px; border-radius:8px; cursor:pointer; font-size:14px; font-weight:500; color:var(--gray-800); -webkit-tap-highlight-color:transparent; min-height:48px; }
+.drawer-item:active { background:var(--gray-100); }
+.drawer-item .di-icon { font-size:20px; width:28px; text-align:center; }
 
-  /* ── PAGE SECTIONS ── */
-  .page-section { display:none; }
-  .page-section.active { display:block; }
+/* ── PAGE SECTIONS ── */
+.page-section { display:none; }
+.page-section.active { display:block; }
 
-  /* ── HERO ── */
-  .hero { background:linear-gradient(135deg, #0A1628 0%, #1a3a5c 60%, #0A1628 100%); padding:40px 16px; position:relative; overflow:hidden; }
-  .hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E"); }
-  .hero-inner { max-width:1280px; margin:auto; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; position:relative; }
-  .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,107,0,.15); border:1px solid rgba(255,107,0,.3); border-radius:99px; padding:6px 14px; margin-bottom:18px; }
-  .hero-badge-dot { width:6px; height:6px; background:var(--primary); border-radius:50%; animation:pulse 1.5s infinite; }
-  @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
-  .hero-badge-text { color:var(--primary); font-size:12px; font-weight:600; }
-  .hero-title { font-family:'Syne',sans-serif; font-size:44px; font-weight:800; color:#fff; line-height:1.1; }
-  .hero-title .highlight { color:var(--primary); }
-  .hero-sub { color:rgba(255,255,255,.65); font-size:16px; margin:16px 0 28px; line-height:1.6; }
-  .hero-actions { display:flex; gap:10px; flex-wrap:wrap; }
-  .hero-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:28px; }
-  .stat-card { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:14px 10px; text-align:center; }
-  .stat-num { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:var(--primary); }
-  .stat-label { font-size:11px; color:rgba(255,255,255,.5); margin-top:2px; }
-  .hero-visual { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .mini-card { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px; backdrop-filter:blur(10px); animation:float 3s ease-in-out infinite; }
-  .mini-card:nth-child(2) { animation-delay:.5s; margin-top:20px; }
-  .mini-card:nth-child(3) { animation-delay:1s; }
-  .mini-card:nth-child(4) { animation-delay:1.5s; margin-top:20px; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-  .mini-card-icon { font-size:26px; margin-bottom:6px; }
-  .mini-card-title { font-size:12px; font-weight:600; color:#fff; }
-  .mini-card-price { font-size:14px; font-weight:700; color:var(--primary); margin-top:3px; }
+/* ── HERO ── */
+.hero { background:linear-gradient(135deg, #0A1628 0%, #1a3a5c 60%, #0A1628 100%); padding:36px 16px 40px; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E"); }
+.hero-inner { max-width:1280px; margin:auto; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; position:relative; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,107,0,.15); border:1px solid rgba(255,107,0,.3); border-radius:99px; padding:6px 14px; margin-bottom:16px; }
+.hero-badge-dot { width:6px; height:6px; background:var(--primary); border-radius:50%; animation:pulse 1.5s infinite; }
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
+.hero-badge-text { color:var(--primary); font-size:12px; font-weight:600; }
+.hero-title { font-family:'Syne',sans-serif; font-size:44px; font-weight:800; color:#fff; line-height:1.1; }
+.hero-title .highlight { color:var(--primary); }
+.hero-sub { color:rgba(255,255,255,.65); font-size:16px; margin:14px 0 24px; line-height:1.6; }
+.hero-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.hero-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:24px; }
+.stat-card { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:14px 10px; text-align:center; }
+.stat-num { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:var(--primary); }
+.stat-label { font-size:11px; color:rgba(255,255,255,.5); margin-top:2px; }
+.hero-visual { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.mini-card { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px; backdrop-filter:blur(10px); animation:float 3s ease-in-out infinite; }
+.mini-card:nth-child(2) { animation-delay:.5s; margin-top:20px; }
+.mini-card:nth-child(3) { animation-delay:1s; }
+.mini-card:nth-child(4) { animation-delay:1.5s; margin-top:20px; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.mini-card-icon { font-size:26px; margin-bottom:6px; }
+.mini-card-title { font-size:12px; font-weight:600; color:#fff; }
+.mini-card-price { font-size:14px; font-weight:700; color:var(--primary); margin-top:3px; }
 
-  /* ── AD STRIP ── */
-  .ad-strip { background:linear-gradient(90deg,var(--primary),#FF9500); padding:12px 16px; overflow:hidden; }
-  .ad-strip-inner { max-width:1280px; margin:auto; display:flex; align-items:center; gap:12px; }
-  .ad-strip-text { color:#fff; font-size:13px; font-weight:600; white-space:nowrap; animation:slideText 22s linear infinite; flex:1; overflow:hidden; }
-  @keyframes slideText { 0%{transform:translateX(100%)} 100%{transform:translateX(-300%)} }
-  .ad-strip-btn { flex-shrink:0; background:#fff; color:var(--primary); font-size:12px; font-weight:700; padding:6px 14px; border-radius:6px; cursor:pointer; border:none; white-space:nowrap; }
+/* ── AD STRIP ── */
+.ad-strip { background:linear-gradient(90deg,var(--primary),#FF9500); padding:10px 14px; overflow:hidden; }
+.ad-strip-inner { max-width:1280px; margin:auto; display:flex; align-items:center; gap:12px; }
+.ad-strip-text { color:#fff; font-size:12px; font-weight:600; white-space:nowrap; animation:slideText 22s linear infinite; flex:1; overflow:hidden; }
+@keyframes slideText { 0%{transform:translateX(100%)} 100%{transform:translateX(-300%)} }
+.ad-strip-btn { flex-shrink:0; background:#fff; color:var(--primary); font-size:12px; font-weight:700; padding:7px 14px; border-radius:6px; cursor:pointer; border:none; white-space:nowrap; min-height:36px; }
 
-  /* ── SECTION ── */
-  .section { max-width:1280px; margin:28px auto; padding:0 16px; }
-  .section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; flex-wrap:wrap; gap:8px; }
-  .section-title { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:var(--secondary); }
-  .section-title span { color:var(--primary); }
-  .see-all { font-size:13px; color:var(--primary); font-weight:600; cursor:pointer; white-space:nowrap; }
+/* ── SECTION ── */
+.section { max-width:1280px; margin:24px auto; padding:0 14px; }
+.section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:8px; }
+.section-title { font-family:'Syne',sans-serif; font-size:19px; font-weight:700; color:var(--secondary); }
+.section-title span { color:var(--primary); }
+.see-all { font-size:13px; color:var(--primary); font-weight:600; cursor:pointer; white-space:nowrap; min-height:44px; display:flex; align-items:center; }
 
-  /* ── CATEGORIES ── */
-  .cats-grid { display:grid; grid-template-columns:repeat(8,1fr); gap:10px; }
-  .cat-card { background:#fff; border-radius:12px; padding:16px 10px; text-align:center; cursor:pointer; transition:all .2s; border:1.5px solid transparent; box-shadow:var(--shadow-sm); -webkit-tap-highlight-color:transparent; }
-  .cat-card:active, .cat-card:hover { border-color:var(--primary); transform:translateY(-2px); box-shadow:var(--shadow); }
-  .cat-icon { font-size:28px; margin-bottom:6px; }
-  .cat-name { font-size:11px; font-weight:600; color:var(--gray-600); }
+/* ── CATEGORIES ── */
+.cats-grid { display:grid; grid-template-columns:repeat(8,1fr); gap:10px; }
+.cat-card { background:#fff; border-radius:12px; padding:14px 8px; text-align:center; cursor:pointer; transition:all .2s; border:1.5px solid transparent; box-shadow:var(--shadow-sm); -webkit-tap-highlight-color:transparent; min-height:80px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.cat-card:active, .cat-card:hover { border-color:var(--primary); transform:translateY(-2px); box-shadow:var(--shadow); }
+.cat-icon { font-size:26px; margin-bottom:5px; }
+.cat-name { font-size:11px; font-weight:600; color:var(--gray-600); line-height:1.2; }
 
-  /* ── FEATURED BANNERS ── */
-  .featured-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:14px; margin-bottom:28px; }
-  .feat-main { background:linear-gradient(135deg,#0A1628,#1e3a5f); border-radius:var(--radius-lg); padding:32px; color:#fff; position:relative; overflow:hidden; min-height:240px; display:flex; flex-direction:column; justify-content:flex-end; cursor:pointer; }
-  .feat-main::before { content:'🛒'; position:absolute; top:-20px; right:-20px; font-size:140px; opacity:.06; }
-  .feat-main-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--primary); margin-bottom:8px; }
-  .feat-main-title { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; line-height:1.2; margin-bottom:10px; }
-  .feat-main-sub { font-size:13px; color:rgba(255,255,255,.6); margin-bottom:16px; }
-  .feat-side { border-radius:var(--radius-lg); padding:24px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; transition:transform .2s; }
-  .feat-side:hover { transform:translateY(-3px); }
-  .feat-side-1 { background:linear-gradient(135deg,#FF6B00,#FF9500); }
-  .feat-side-2 { background:linear-gradient(135deg,#00C896,#00A878); }
-  .feat-side-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; color:#fff; }
-  .feat-side-sub { font-size:12px; color:rgba(255,255,255,.75); margin-top:5px; }
-  .feat-side-icon { font-size:40px; margin-bottom:10px; }
+/* ── FEATURED BANNERS ── */
+.featured-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:14px; margin-bottom:24px; }
+.feat-main { background:linear-gradient(135deg,#0A1628,#1e3a5f); border-radius:var(--radius-lg); padding:28px; color:#fff; position:relative; overflow:hidden; min-height:220px; display:flex; flex-direction:column; justify-content:flex-end; cursor:pointer; }
+.feat-main::before { content:'🛒'; position:absolute; top:-20px; right:-20px; font-size:140px; opacity:.06; }
+.feat-main-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--primary); margin-bottom:8px; }
+.feat-main-title { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; line-height:1.2; margin-bottom:10px; }
+.feat-main-sub { font-size:13px; color:rgba(255,255,255,.6); margin-bottom:14px; }
+.feat-side { border-radius:var(--radius-lg); padding:22px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; transition:transform .2s; }
+.feat-side:hover { transform:translateY(-3px); }
+.feat-side-1 { background:linear-gradient(135deg,#FF6B00,#FF9500); }
+.feat-side-2 { background:linear-gradient(135deg,#00C896,#00A878); }
+.feat-side-title { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; color:#fff; }
+.feat-side-sub { font-size:12px; color:rgba(255,255,255,.75); margin-top:4px; }
+.feat-side-icon { font-size:38px; margin-bottom:8px; }
 
-  /* ── PRODUCT GRID ── */
-  .products-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
-  .product-card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:all .25s; cursor:pointer; border:1.5px solid transparent; }
-  .product-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); border-color:var(--gray-200); }
-  .product-img { height:160px; display:flex; align-items:center; justify-content:center; font-size:64px; background:var(--gray-50); position:relative; }
-  .product-badges { position:absolute; top:8px; left:8px; display:flex; flex-direction:column; gap:3px; }
-  .wishlist-btn { position:absolute; top:8px; right:8px; background:#fff; border:none; border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:var(--shadow-sm); font-size:15px; }
-  .product-info { padding:12px; }
-  .product-name { font-size:13px; font-weight:500; color:var(--gray-800); margin-bottom:4px; line-height:1.4; }
-  .product-seller { font-size:11px; color:var(--gray-400); margin-bottom:4px; }
-  .product-rating { display:flex; align-items:center; gap:3px; font-size:11px; margin-bottom:7px; }
-  .product-price-row { display:flex; align-items:center; justify-content:space-between; gap:4px; }
-  .product-price { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:var(--secondary); }
-  .product-old-price { font-size:11px; color:var(--gray-400); text-decoration:line-through; }
-  .add-cart-btn { background:var(--primary); color:#fff; border:none; border-radius:6px; padding:6px 10px; font-size:11px; font-weight:600; cursor:pointer; white-space:nowrap; flex-shrink:0; }
+/* ── PRODUCT GRID ── */
+.products-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+.product-card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:all .25s; cursor:pointer; border:1.5px solid transparent; }
+.product-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); border-color:var(--gray-200); }
+.product-img { height:150px; display:flex; align-items:center; justify-content:center; font-size:60px; background:var(--gray-50); position:relative; }
+.product-badges { position:absolute; top:8px; left:8px; display:flex; flex-direction:column; gap:3px; }
+.wishlist-btn { position:absolute; top:8px; right:8px; background:#fff; border:none; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:var(--shadow-sm); font-size:15px; }
+.product-info { padding:11px; }
+.product-name { font-size:13px; font-weight:500; color:var(--gray-800); margin-bottom:3px; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.product-seller { font-size:11px; color:var(--gray-400); margin-bottom:4px; }
+.product-rating { display:flex; align-items:center; gap:3px; font-size:11px; margin-bottom:6px; }
+.product-price-row { display:flex; align-items:center; justify-content:space-between; gap:4px; flex-wrap:wrap; }
+.product-price { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--secondary); }
+.product-old-price { font-size:11px; color:var(--gray-400); text-decoration:line-through; }
+.add-cart-btn { background:var(--primary); color:#fff; border:none; border-radius:6px; padding:7px 10px; font-size:11px; font-weight:600; cursor:pointer; white-space:nowrap; flex-shrink:0; min-height:32px; }
 
-  /* ── JOBS SECTION ── */
-  .jobs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-  .job-card { background:#fff; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow-sm); transition:all .25s; cursor:pointer; border-left:4px solid transparent; }
-  .job-card:hover { box-shadow:var(--shadow); border-left-color:var(--accent); }
-  .job-header { display:flex; align-items:flex-start; gap:12px; margin-bottom:10px; }
-  .job-logo { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px; background:var(--gray-50); flex-shrink:0; }
-  .job-title { font-weight:700; font-size:14px; color:var(--secondary); }
-  .job-company { font-size:12px; color:var(--gray-600); margin-top:2px; }
-  .job-tags { display:flex; gap:5px; flex-wrap:wrap; margin-top:10px; }
-  .job-tag { background:var(--gray-100); color:var(--gray-600); padding:3px 9px; border-radius:99px; font-size:11px; font-weight:500; }
-  .job-footer { display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding-top:12px; border-top:1px solid var(--gray-100); flex-wrap:wrap; gap:6px; }
-  .job-salary { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--accent); }
-  .job-date { font-size:11px; color:var(--gray-400); }
+/* ── JOBS SECTION ── */
+.jobs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.job-card { background:#fff; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow-sm); transition:all .25s; cursor:pointer; border-left:4px solid transparent; }
+.job-card:hover { box-shadow:var(--shadow); border-left-color:var(--accent); }
+.job-header { display:flex; align-items:flex-start; gap:12px; margin-bottom:10px; }
+.job-logo { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px; background:var(--gray-50); flex-shrink:0; }
+.job-title { font-weight:700; font-size:14px; color:var(--secondary); }
+.job-company { font-size:12px; color:var(--gray-600); margin-top:2px; }
+.job-tags { display:flex; gap:5px; flex-wrap:wrap; margin-top:10px; }
+.job-tag { background:var(--gray-100); color:var(--gray-600); padding:3px 9px; border-radius:99px; font-size:11px; font-weight:500; }
+.job-footer { display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding-top:12px; border-top:1px solid var(--gray-100); flex-wrap:wrap; gap:6px; }
+.job-salary { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--accent); }
+.job-date { font-size:11px; color:var(--gray-400); }
 
-  /* ── ADVERTISED PRODUCTS ── */
-  .ad-products { background:linear-gradient(135deg,#fffbf0,#fff7e6); border:1.5px solid #FFE0B2; border-radius:var(--radius-lg); padding:22px; margin-bottom:28px; }
-  .ad-products-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
-  .ad-tag { background:var(--primary); color:#fff; padding:4px 12px; border-radius:99px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; flex-shrink:0; }
-  .ad-products-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-  .ad-product-card { background:#fff; border-radius:var(--radius); padding:14px; text-align:center; box-shadow:var(--shadow-sm); transition:all .2s; cursor:pointer; border:1.5px solid #FFE0B2; }
-  .ad-product-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
-  .ad-product-icon { font-size:50px; margin-bottom:8px; }
-  .ad-product-name { font-size:13px; font-weight:600; color:var(--secondary); }
-  .ad-product-price { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--primary); margin-top:4px; }
-  .ad-product-seller { font-size:11px; color:var(--gray-400); margin-top:2px; }
-  .ad-product-badge { display:inline-block; background:#FFE0B2; color:#E65100; font-size:10px; font-weight:700; padding:2px 8px; border-radius:99px; margin-bottom:6px; }
+/* ── ADVERTISED PRODUCTS ── */
+.ad-products { background:linear-gradient(135deg,#fffbf0,#fff7e6); border:1.5px solid #FFE0B2; border-radius:var(--radius-lg); padding:20px; margin-bottom:24px; }
+.ad-products-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+.ad-tag { background:var(--primary); color:#fff; padding:4px 12px; border-radius:99px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; flex-shrink:0; }
+.ad-products-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.ad-product-card { background:#fff; border-radius:var(--radius); padding:14px; text-align:center; box-shadow:var(--shadow-sm); transition:all .2s; cursor:pointer; border:1.5px solid #FFE0B2; }
+.ad-product-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+.ad-product-icon { font-size:48px; margin-bottom:8px; }
+.ad-product-name { font-size:13px; font-weight:600; color:var(--secondary); }
+.ad-product-price { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--primary); margin-top:4px; }
+.ad-product-seller { font-size:11px; color:var(--gray-400); margin-top:2px; }
+.ad-product-badge { display:inline-block; background:#FFE0B2; color:#E65100; font-size:10px; font-weight:700; padding:2px 8px; border-radius:99px; margin-bottom:6px; }
 
-  /* ── MODALS ── */
-  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:1000; align-items:flex-start; justify-content:center; padding:16px; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-  .modal-overlay.open { display:flex; }
-  .modal { background:#fff; border-radius:var(--radius-lg); max-width:560px; width:100%; padding:24px; position:relative; animation:modalIn .25s ease; margin:auto; }
-  @keyframes modalIn { from{transform:translateY(-20px);opacity:0} to{transform:translateY(0);opacity:1} }
-  .modal-close { position:absolute; top:14px; right:14px; background:var(--gray-100); border:none; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; }
-  .modal-title { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:4px; padding-right:36px; }
-  .modal-sub { font-size:13px; color:var(--gray-600); margin-bottom:20px; }
-  .tab-row { display:flex; gap:0; border-bottom:2px solid var(--gray-200); margin-bottom:20px; overflow-x:auto; scrollbar-width:none; }
-  .tab-row::-webkit-scrollbar { display:none; }
-  .tab { padding:9px 16px; font-size:13px; font-weight:600; color:var(--gray-600); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; white-space:nowrap; }
-  .tab.active { color:var(--primary); border-bottom-color:var(--primary); }
-  .tab-content { display:none; }
-  .tab-content.active { display:block; }
+/* ── MODALS ── */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:1000; align-items:flex-end; justify-content:center; padding:0; overflow:hidden; }
+.modal-overlay.open { display:flex; }
+.modal { background:#fff; border-radius:var(--radius-lg) var(--radius-lg) 0 0; max-width:600px; width:100%; padding:20px 16px 30px; position:relative; animation:modalIn .28s ease; max-height:93vh; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+@keyframes modalIn { from{transform:translateY(30px);opacity:0} to{transform:translateY(0);opacity:1} }
+.modal-close { position:absolute; top:14px; right:14px; background:var(--gray-100); border:none; border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; }
+.modal-title { font-family:'Syne',sans-serif; font-size:19px; font-weight:700; margin-bottom:4px; padding-right:40px; }
+.modal-sub { font-size:13px; color:var(--gray-600); margin-bottom:18px; }
+/* Modal drag handle */
+.modal::before { content:''; display:block; width:40px; height:4px; background:var(--gray-200); border-radius:99px; margin:0 auto 16px; }
+.tab-row { display:flex; gap:0; border-bottom:2px solid var(--gray-200); margin-bottom:18px; overflow-x:auto; scrollbar-width:none; }
+.tab-row::-webkit-scrollbar { display:none; }
+.tab { padding:9px 16px; font-size:13px; font-weight:600; color:var(--gray-600); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; white-space:nowrap; min-height:44px; display:flex; align-items:center; }
+.tab.active { color:var(--primary); border-bottom-color:var(--primary); }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
 
-  /* ── CART SIDEBAR ── */
-  .cart-sidebar { position:fixed; right:0; top:0; height:100vh; width:380px; max-width:100vw; background:#fff; z-index:200; box-shadow:-4px 0 24px rgba(0,0,0,.15); transform:translateX(100%); transition:transform .3s; display:flex; flex-direction:column; }
-  .cart-sidebar.open { transform:translateX(0); }
-  .cart-header { padding:20px 16px; border-bottom:1px solid var(--gray-200); display:flex; align-items:center; justify-content:space-between; }
-  .cart-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; }
-  .cart-body { flex:1; overflow-y:auto; padding:12px 16px; -webkit-overflow-scrolling:touch; }
-  .cart-footer { padding:16px; border-top:1px solid var(--gray-200); }
-  .cart-item { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--gray-100); }
-  .cart-item-icon { font-size:32px; background:var(--gray-50); border-radius:8px; width:56px; height:56px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .cart-item-info { flex:1; min-width:0; }
-  .cart-item-name { font-size:13px; font-weight:500; }
-  .cart-item-price { font-size:14px; font-weight:700; color:var(--primary); margin-top:3px; }
-  .cart-item-qty { display:flex; align-items:center; gap:8px; margin-top:7px; }
-  .qty-btn { background:var(--gray-100); border:none; border-radius:6px; width:28px; height:28px; cursor:pointer; font-size:16px; font-weight:700; display:flex; align-items:center; justify-content:center; }
-  .cart-total-row { display:flex; justify-content:space-between; margin-bottom:7px; font-size:14px; }
-  .cart-total-row.big { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; }
-  .overlay-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,.3); z-index:190; }
-  .overlay-bg.open { display:block; }
+/* ── CART SIDEBAR ── */
+.cart-sidebar { position:fixed; right:0; top:0; height:100vh; width:100vw; max-width:420px; background:#fff; z-index:200; box-shadow:-4px 0 24px rgba(0,0,0,.15); transform:translateX(100%); transition:transform .3s; display:flex; flex-direction:column; }
+.cart-sidebar.open { transform:translateX(0); }
+.cart-header { padding:18px 16px; border-bottom:1px solid var(--gray-200); display:flex; align-items:center; justify-content:space-between; }
+.cart-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; }
+.cart-body { flex:1; overflow-y:auto; padding:12px 14px; -webkit-overflow-scrolling:touch; }
+.cart-footer { padding:14px 16px; border-top:1px solid var(--gray-200); padding-bottom:max(14px, env(safe-area-inset-bottom)); }
+.cart-item { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--gray-100); }
+.cart-item-icon { font-size:30px; background:var(--gray-50); border-radius:8px; width:54px; height:54px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.cart-item-info { flex:1; min-width:0; }
+.cart-item-name { font-size:13px; font-weight:500; }
+.cart-item-price { font-size:14px; font-weight:700; color:var(--primary); margin-top:2px; }
+.cart-item-qty { display:flex; align-items:center; gap:8px; margin-top:6px; }
+.qty-btn { background:var(--gray-100); border:none; border-radius:6px; width:32px; height:32px; cursor:pointer; font-size:16px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+.cart-total-row { display:flex; justify-content:space-between; margin-bottom:7px; font-size:14px; }
+.cart-total-row.big { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; }
+.overlay-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,.3); z-index:190; }
+.overlay-bg.open { display:block; }
 
-  /* ── SELLER DASHBOARD ── */
-  .dashboard { max-width:1280px; margin:24px auto; padding:0 16px; }
-  .dash-grid { display:grid; grid-template-columns:220px 1fr; gap:20px; }
-  .dash-sidebar { background:#fff; border-radius:var(--radius-lg); padding:20px; box-shadow:var(--shadow-sm); height:fit-content; }
-  .dash-menu-item { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:8px; cursor:pointer; font-size:14px; font-weight:500; color:var(--gray-600); transition:all .2s; margin-bottom:3px; }
-  .dash-menu-item:hover, .dash-menu-item.active { background:var(--primary-light); color:var(--primary); }
-  .dash-content { display:flex; flex-direction:column; gap:16px; }
-  .dash-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-  .dash-stat { background:#fff; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow-sm); }
-  .dash-stat-value { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:var(--secondary); }
-  .dash-stat-label { font-size:12px; color:var(--gray-400); margin-top:3px; }
-  .dash-stat-change { font-size:12px; margin-top:6px; }
-  .dash-stat-change.up { color:var(--accent); }
-  .dash-stat-change.down { color:var(--red); }
-  .dash-card { background:#fff; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow-sm); }
-  .dash-card-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; margin-bottom:14px; }
-  .product-table { width:100%; border-collapse:collapse; }
-  .product-table th { text-align:left; font-size:11px; font-weight:600; color:var(--gray-400); text-transform:uppercase; padding:7px 10px; border-bottom:1px solid var(--gray-200); }
-  .product-table td { padding:10px; border-bottom:1px solid var(--gray-100); font-size:13px; vertical-align:middle; }
-  .status-badge { padding:3px 10px; border-radius:99px; font-size:11px; font-weight:600; }
-  .status-active { background:#E8F5E9; color:#2E7D32; }
-  .status-pending { background:#FFF8E1; color:#F57F17; }
+/* ── SELLER DASHBOARD ── */
+.dashboard { max-width:1280px; margin:20px auto; padding:0 14px; }
+.dash-grid { display:grid; grid-template-columns:220px 1fr; gap:20px; }
+.dash-sidebar { background:#fff; border-radius:var(--radius-lg); padding:20px; box-shadow:var(--shadow-sm); height:fit-content; }
+.dash-menu-item { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:8px; cursor:pointer; font-size:14px; font-weight:500; color:var(--gray-600); transition:all .2s; margin-bottom:3px; min-height:44px; }
+.dash-menu-item:hover, .dash-menu-item.active { background:var(--primary-light); color:var(--primary); }
+.dash-content { display:flex; flex-direction:column; gap:16px; }
+.dash-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.dash-stat { background:#fff; border-radius:var(--radius); padding:16px; box-shadow:var(--shadow-sm); }
+.dash-stat-value { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:var(--secondary); }
+.dash-stat-label { font-size:12px; color:var(--gray-400); margin-top:2px; }
+.dash-stat-change { font-size:12px; margin-top:5px; }
+.dash-stat-change.up { color:var(--accent); }
+.dash-stat-change.down { color:var(--red); }
+.dash-card { background:#fff; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow-sm); }
+.dash-card-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; margin-bottom:14px; }
+.product-table { width:100%; border-collapse:collapse; }
+.product-table th { text-align:left; font-size:11px; font-weight:600; color:var(--gray-400); text-transform:uppercase; padding:7px 8px; border-bottom:1px solid var(--gray-200); }
+.product-table td { padding:9px 8px; border-bottom:1px solid var(--gray-100); font-size:13px; vertical-align:middle; }
+.status-badge { padding:3px 10px; border-radius:99px; font-size:11px; font-weight:600; }
+.status-active { background:#E8F5E9; color:#2E7D32; }
+.status-pending { background:#FFF8E1; color:#F57F17; }
 
-  /* ── TOAST ── */
-  .toast { position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--secondary); color:#fff; padding:12px 20px; border-radius:10px; font-size:14px; font-weight:500; z-index:9999; opacity:0; transition:all .3s; display:flex; align-items:center; gap:10px; white-space:nowrap; max-width:90vw; }
-  .toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+/* ── TOAST ── */
+.toast { position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--secondary); color:#fff; padding:12px 20px; border-radius:10px; font-size:14px; font-weight:500; z-index:9999; opacity:0; transition:all .3s; display:flex; align-items:center; gap:10px; white-space:nowrap; max-width:calc(100vw - 32px); }
+.toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
 
-  /* ── RECRUITMENT PAGE ── */
-  .recruit-hero { background:linear-gradient(135deg,#0A1628,#0d3d2d); padding:48px 16px; text-align:center; }
-  .recruit-hero-title { font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:#fff; }
-  .recruit-hero-title span { color:var(--accent); }
-  .recruit-hero-sub { color:rgba(255,255,255,.6); font-size:16px; margin:12px auto 28px; max-width:560px; line-height:1.6; }
-  .recruit-search { max-width:680px; margin:0 auto; background:#fff; border-radius:10px; display:flex; overflow:hidden; box-shadow:var(--shadow-lg); }
-  .recruit-search input { border:none; flex:1; padding:14px 16px; font-size:14px; }
-  .recruit-search button { background:var(--accent); color:#fff; border:none; padding:14px 22px; font-weight:700; cursor:pointer; font-size:14px; font-family:'DM Sans',sans-serif; white-space:nowrap; }
-  .recruit-stats { display:flex; justify-content:center; gap:32px; margin-top:28px; flex-wrap:wrap; }
-  .r-stat { text-align:center; }
-  .r-stat-num { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; color:var(--accent); }
-  .r-stat-label { font-size:12px; color:rgba(255,255,255,.5); }
-  .employer-cta { background:linear-gradient(135deg,var(--accent),#009b76); border-radius:var(--radius-lg); padding:28px; display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; gap:16px; }
-  .employer-cta-text h3 { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:#fff; }
-  .employer-cta-text p { color:rgba(255,255,255,.75); margin-top:5px; font-size:13px; }
+/* ── RECRUITMENT PAGE ── */
+.recruit-hero { background:linear-gradient(135deg,#0A1628,#0d3d2d); padding:44px 14px; text-align:center; }
+.recruit-hero-title { font-family:'Syne',sans-serif; font-size:34px; font-weight:800; color:#fff; }
+.recruit-hero-title span { color:var(--accent); }
+.recruit-hero-sub { color:rgba(255,255,255,.6); font-size:15px; margin:12px auto 24px; max-width:560px; line-height:1.6; }
+.recruit-search { max-width:680px; margin:0 auto; background:#fff; border-radius:10px; display:flex; overflow:hidden; box-shadow:var(--shadow-lg); }
+.recruit-search input { border:none; flex:1; padding:14px 16px; font-size:16px; }
+.recruit-search button { background:var(--accent); color:#fff; border:none; padding:14px 22px; font-weight:700; cursor:pointer; font-size:14px; font-family:'DM Sans',sans-serif; white-space:nowrap; min-height:52px; }
+.recruit-stats { display:flex; justify-content:center; gap:28px; margin-top:24px; flex-wrap:wrap; }
+.r-stat { text-align:center; }
+.r-stat-num { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:var(--accent); }
+.r-stat-label { font-size:12px; color:rgba(255,255,255,.5); }
+.employer-cta { background:linear-gradient(135deg,var(--accent),#009b76); border-radius:var(--radius-lg); padding:24px; display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; gap:16px; }
+.employer-cta-text h3 { font-family:'Syne',sans-serif; font-size:19px; font-weight:700; color:#fff; }
+.employer-cta-text p { color:rgba(255,255,255,.75); margin-top:4px; font-size:13px; }
 
-  /* ── FOOTER ── */
-  footer { background:var(--secondary); color:rgba(255,255,255,.65); margin-top:48px; }
-  .footer-top { max-width:1280px; margin:auto; padding:40px 16px 28px; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:28px; }
-  .footer-brand .logo { font-size:24px; margin-bottom:10px; display:block; }
-  .footer-brand p { font-size:13px; line-height:1.7; max-width:260px; }
-  .footer-col h4 { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:#fff; margin-bottom:14px; }
-  .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
-  .footer-col a { color:rgba(255,255,255,.55); font-size:13px; text-decoration:none; transition:color .2s; }
-  .footer-col a:hover { color:#fff; }
-  .footer-bottom { border-top:1px solid rgba(255,255,255,.08); text-align:center; padding:18px 16px; font-size:12px; }
+/* ── FOOTER ── */
+footer { background:var(--secondary); color:rgba(255,255,255,.65); margin-top:40px; }
+.footer-top { max-width:1280px; margin:auto; padding:36px 14px 24px; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:24px; }
+.footer-brand .logo { font-size:22px; margin-bottom:10px; display:block; }
+.footer-brand p { font-size:13px; line-height:1.7; max-width:260px; }
+.footer-col h4 { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:#fff; margin-bottom:12px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.footer-col a { color:rgba(255,255,255,.55); font-size:13px; text-decoration:none; transition:color .2s; }
+.footer-col a:hover { color:#fff; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,.08); text-align:center; padding:16px 14px; font-size:12px; }
 
-  /* ── MOBILE BOTTOM BAR ── */
-  .mobile-bottom-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid var(--gray-200); z-index:120; padding:0; }
-  .mbb-inner { display:grid; grid-template-columns:repeat(5,1fr); }
-  .mbb-item { display:flex; flex-direction:column; align-items:center; padding:10px 4px 8px; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }
-  .mbb-item:active { background:var(--gray-50); }
-  .mbb-icon { font-size:22px; line-height:1; }
-  .mbb-label { font-size:10px; font-weight:600; color:var(--gray-600); margin-top:3px; }
-  .mbb-item.active .mbb-label { color:var(--primary); }
-  .mbb-badge { position:absolute; top:6px; right:calc(50% - 18px); background:var(--primary); color:#fff; font-size:9px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+/* ── MOBILE BOTTOM BAR ── */
+.mobile-bottom-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid var(--gray-200); z-index:120; padding:0; padding-bottom:env(safe-area-inset-bottom); }
+.mbb-inner { display:grid; grid-template-columns:repeat(5,1fr); }
+.mbb-item { display:flex; flex-direction:column; align-items:center; padding:10px 4px 8px; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; min-height:56px; }
+.mbb-item:active { background:var(--gray-50); }
+.mbb-icon { font-size:22px; line-height:1; }
+.mbb-label { font-size:10px; font-weight:600; color:var(--gray-600); margin-top:3px; }
+.mbb-item.active .mbb-label { color:var(--primary); }
+.mbb-badge { position:absolute; top:6px; right:calc(50% - 18px); background:var(--primary); color:#fff; font-size:9px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
 
-  /* ── DESKTOP BREAKPOINTS ── */
-  @media(min-width:1025px) {
-    .search-cat { display:block; width:140px; border:none; border-right:1.5px solid var(--gray-200); border-radius:0; background:#f3f4f6; font-size:13px; }
-    .header-btn { font-size:13px; padding:8px 14px; }
-  }
+/* ════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════════════ */
 
-  /* ── TABLET ── */
-  @media(max-width:1024px) {
-    .products-grid { grid-template-columns:repeat(3,1fr); }
-    .cats-grid { grid-template-columns:repeat(4,1fr); }
-    .hero-inner { grid-template-columns:1fr; }
-    .hero-visual { display:none; }
-    .hero-title { font-size:36px; }
-    .featured-grid { grid-template-columns:1fr 1fr; }
-    .feat-side-2 { display:none; }
-    .dash-stats { grid-template-columns:repeat(2,1fr); }
-    .footer-top { grid-template-columns:1fr 1fr; }
-    .jobs-grid { grid-template-columns:repeat(2,1fr); }
-    .ad-products-grid { grid-template-columns:repeat(2,1fr); }
-  }
+/* ── LARGE DESKTOP ── */
+@media(min-width:1025px) {
+  .search-cat { display:block; width:140px; border:none; border-right:1.5px solid var(--gray-200); border-radius:0; background:#f3f4f6; font-size:13px; }
+  .header-btn { font-size:13px; padding:8px 14px; }
+}
 
-  /* ── MOBILE ── */
-  @media(max-width:640px) {
-    .topbar { display:none; }
-    .menu-toggle { display:block; }
-    .header-inner { gap:8px; padding:0 12px; }
-    .logo { font-size:18px; }
-    .search-bar { }
-    .search-bar input { font-size:14px; padding:9px 10px; }
-    .header-btn.jobs-btn, .header-btn.store-btn { display:none; }
+/* ── TABLET (768–1024) ── */
+@media(max-width:1024px) {
+  .products-grid { grid-template-columns:repeat(3,1fr); }
+  .cats-grid { grid-template-columns:repeat(4,1fr); }
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-visual { display:none; }
+  .hero-title { font-size:36px; }
+  .featured-grid { grid-template-columns:1fr 1fr; }
+  .feat-side-2 { display:none; }
+  .dash-stats { grid-template-columns:repeat(2,1fr); }
+  .footer-top { grid-template-columns:1fr 1fr; }
+  .jobs-grid { grid-template-columns:repeat(2,1fr); }
+  .ad-products-grid { grid-template-columns:repeat(2,1fr); }
+}
 
-    .hero { padding:28px 12px 32px; }
-    .hero-title { font-size:28px; }
-    .hero-sub { font-size:14px; margin:12px 0 20px; }
-    .hero-actions { gap:8px; }
-    .hero-actions .btn { padding:10px 16px; font-size:13px; }
-    .hero-stats { grid-template-columns:repeat(3,1fr); gap:8px; }
-    .stat-card { padding:10px 6px; }
-    .stat-num { font-size:18px; }
-    .stat-label { font-size:10px; }
+/* ── MOBILE (≤640px) ── */
+@media(max-width:640px) {
+  /* Global */
+  .topbar { display:none; }
+  body { padding-bottom:64px; }
 
-    .ad-strip { padding:10px 12px; }
-    .ad-strip-text { font-size:12px; }
+  /* Header */
+  .menu-toggle { display:flex; }
+  .header-inner { padding:0 10px; gap:6px; }
+  .logo { font-size:16px; }
+  .search-bar input { padding:9px 8px; font-size:16px; }
+  .header-btn.jobs-btn,
+  .header-btn.store-btn { display:none; }
+  .header-btn { padding:7px 9px; font-size:12px; }
 
-    .section { margin:20px auto; padding:0 12px; }
-    .section-title { font-size:18px; }
+  /* Nav */
+  .nav-item { padding:9px 10px; font-size:12px; }
 
-    .cats-grid { grid-template-columns:repeat(4,1fr); gap:8px; }
-    .cat-card { padding:12px 6px; }
-    .cat-icon { font-size:24px; }
-    .cat-name { font-size:10px; }
+  /* Hero */
+  .hero { padding:24px 12px 30px; }
+  .hero-title { font-size:26px; }
+  .hero-sub { font-size:14px; margin:10px 0 18px; }
+  .hero-actions .btn { padding:10px 14px; font-size:13px; }
+  .hero-stats { gap:8px; }
+  .stat-card { padding:10px 6px; }
+  .stat-num { font-size:17px; }
+  .stat-label { font-size:10px; }
 
-    .featured-grid { grid-template-columns:1fr; gap:10px; }
-    .feat-main { min-height:180px; padding:24px; }
-    .feat-main-title { font-size:20px; }
-    .feat-side { min-height:120px; padding:20px; flex-direction:row; align-items:center; gap:16px; }
-    .feat-side-icon { font-size:36px; margin-bottom:0; flex-shrink:0; }
+  /* Ad strip */
+  .ad-strip { padding:9px 12px; }
+  .ad-strip-text { font-size:11px; }
 
-    .products-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
-    .product-img { height:130px; font-size:52px; }
-    .product-info { padding:10px; }
-    .product-name { font-size:12px; }
-    .product-price { font-size:14px; }
-    .add-cart-btn { padding:5px 8px; font-size:10px; }
+  /* Sections */
+  .section { margin:16px auto; padding:0 12px; }
+  .section-title { font-size:17px; }
 
-    .ad-products { padding:16px 12px; border-radius:var(--radius); }
-    .ad-products-header { gap:8px; }
-    .ad-products-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
-    .ad-product-card { padding:12px 8px; }
-    .ad-product-icon { font-size:40px; }
-    .ad-product-name { font-size:12px; }
-    .ad-product-price { font-size:13px; }
+  /* Categories */
+  .cats-grid { grid-template-columns:repeat(4,1fr); gap:7px; }
+  .cat-card { padding:10px 5px; min-height:68px; }
+  .cat-icon { font-size:22px; }
+  .cat-name { font-size:10px; }
 
-    .jobs-grid { grid-template-columns:1fr; gap:10px; }
-    .job-card { padding:14px; }
+  /* Featured banners */
+  .featured-grid { grid-template-columns:1fr; gap:10px; }
+  .feat-main { min-height:170px; padding:22px; }
+  .feat-main-title { font-size:19px; }
+  .feat-side { min-height:110px; padding:18px; flex-direction:row; align-items:center; gap:14px; }
+  .feat-side-icon { font-size:34px; margin-bottom:0; flex-shrink:0; }
+  .feat-side-2 { display:flex; }
 
-    .recruit-hero { padding:32px 12px; }
-    .recruit-hero-title { font-size:26px; }
-    .recruit-hero-sub { font-size:14px; }
-    .recruit-search { flex-direction:column; border-radius:10px; }
-    .recruit-search input { border-radius:10px 10px 0 0; border:none; border-bottom:1px solid var(--gray-200); }
-    .recruit-search button { border-radius:0 0 10px 10px; padding:14px; }
-    .recruit-stats { gap:20px; }
-    .r-stat-num { font-size:22px; }
+  /* Products */
+  .products-grid { grid-template-columns:repeat(2,1fr); gap:9px; }
+  .product-img { height:120px; font-size:50px; }
+  .product-info { padding:9px; }
+  .product-name { font-size:12px; }
+  .product-price { font-size:14px; }
+  .product-price-row { flex-direction:column; align-items:flex-start; gap:5px; }
+  .add-cart-btn { width:100%; text-align:center; font-size:11px; padding:7px 8px; }
 
-    .employer-cta { flex-direction:column; text-align:center; padding:20px; }
-    .employer-cta-text h3 { font-size:18px; }
+  /* Sponsored ads */
+  .ad-products { padding:14px 12px; border-radius:var(--radius); }
+  .ad-products-grid { grid-template-columns:repeat(2,1fr); gap:9px; }
+  .ad-product-card { padding:11px 8px; }
+  .ad-product-icon { font-size:38px; }
+  .ad-product-name { font-size:11px; }
+  .ad-product-price { font-size:13px; }
 
-    .modal { padding:20px 16px; border-radius:16px; }
-    .modal-title { font-size:18px; }
-    .form-row { grid-template-columns:1fr; gap:0; }
+  /* Jobs */
+  .jobs-grid { grid-template-columns:1fr; gap:9px; }
+  .job-card { padding:13px; }
+  .job-footer { flex-direction:column; align-items:flex-start; }
+  .job-footer .btn { width:100%; }
 
-    .cart-sidebar { width:100vw; }
-    .cart-body { padding:10px 14px; }
-    .cart-footer { padding:12px 14px; }
+  /* Modals — bottom sheet */
+  .modal-overlay { align-items:flex-end; padding:0; }
+  .modal { border-radius:20px 20px 0 0; padding:16px 14px 28px; max-height:92vh; }
+  .modal-title { font-size:17px; }
+  .form-row { grid-template-columns:1fr; gap:0; }
 
-    .dashboard { padding:0 12px; margin:16px auto; }
-    .dash-grid { grid-template-columns:1fr; }
-    .dash-sidebar { display:none; }
-    .dash-stats { grid-template-columns:repeat(2,1fr); gap:10px; }
-    .dash-stat { padding:14px; }
-    .dash-stat-value { font-size:20px; }
-    .product-table { font-size:12px; }
-    .product-table th, .product-table td { padding:8px 6px; }
+  /* Cart */
+  .cart-sidebar { width:100vw; max-width:100vw; }
+  .cart-footer { padding:12px 14px 20px; }
 
-    .footer-top { grid-template-columns:1fr; gap:20px; padding:28px 16px 20px; }
-    .footer-brand p { max-width:100%; }
-    .footer-bottom { padding-bottom:80px; }
+  /* Recruit */
+  .recruit-hero { padding:28px 12px; }
+  .recruit-hero-title { font-size:24px; }
+  .recruit-hero-sub { font-size:13px; }
+  .recruit-search { flex-direction:column; border-radius:10px; }
+  .recruit-search input { border-radius:10px 10px 0 0; border-bottom:1px solid var(--gray-200); }
+  .recruit-search button { border-radius:0 0 10px 10px; padding:13px; }
+  .recruit-stats { gap:18px; }
+  .r-stat-num { font-size:20px; }
 
-    .mobile-bottom-bar { display:block; }
-    body { padding-bottom:60px; }
+  /* Employer CTA */
+  .employer-cta { flex-direction:column; text-align:center; padding:18px; }
+  .employer-cta .btn { width:100%; }
 
-    .toast { bottom:74px; font-size:13px; padding:10px 16px; }
-  }
+  /* Dashboard */
+  .dashboard { padding:0 12px; margin:14px auto; }
+  .dash-grid { grid-template-columns:1fr; }
+  .dash-sidebar { display:none; }
+  .dash-stats { grid-template-columns:repeat(2,1fr); gap:9px; }
+  .dash-stat { padding:13px; }
+  .dash-stat-value { font-size:19px; }
+  .product-table { font-size:11px; }
+  .product-table th,
+  .product-table td { padding:7px 5px; }
 
-  @media(max-width:380px) {
-    .hero-title { font-size:24px; }
-    .cats-grid { grid-template-columns:repeat(4,1fr); gap:6px; }
-    .products-grid { gap:8px; }
-    .product-img { height:110px; font-size:44px; }
-  }
+  /* Footer */
+  .footer-top { grid-template-columns:1fr; gap:18px; padding:24px 12px 18px; }
+  .footer-brand p { max-width:100%; }
+  .footer-bottom { padding-bottom:72px; font-size:11px; }
+
+  /* Bottom bar */
+  .mobile-bottom-bar { display:block; }
+
+  /* Toast */
+  .toast { bottom:72px; font-size:13px; padding:10px 16px; }
+
+  /* Product detail modal two-col → single */
+  .product-detail-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── VERY SMALL (≤380px) ── */
+@media(max-width:380px) {
+  .logo { font-size:14px; }
+  .hero-title { font-size:22px; }
+  .hero-stats { grid-template-columns:repeat(3,1fr); gap:5px; }
+  .cats-grid { grid-template-columns:repeat(4,1fr); gap:5px; }
+  .cat-card { padding:8px 4px; }
+  .cat-icon { font-size:20px; }
+  .products-grid { gap:7px; }
+  .product-img { height:105px; font-size:44px; }
+  .section-title { font-size:15px; }
+  .recruit-hero-title { font-size:20px; }
+}
 </style>
 </head>
 <body>
 
 <!-- TOP BAR (desktop only) -->
 <div class="topbar">
-  <div class="topbar-inner">
-    <div>🇳🇬 Delivering across Nigeria — Free shipping on orders over ₦15,000</div>
-    <div class="topbar-links">
-      <a href="#" onclick="showModal('loginModal')">Sign In</a>
-      <a href="#" onclick="showModal('registerModal')">Register</a>
-      <a href="#" onclick="showSection('seller')">Sell on Corazon</a>
-      <a href="#">Help</a>
-    </div>
-  </div>
+<div class="topbar-inner">
+<div>🇳🇬 Delivering across Nigeria — Free shipping on orders over ₦15,000</div>
+<div class="topbar-links">
+<a href="#" onclick="showModal('loginModal')">Sign In</a>
+<a href="#" onclick="showModal('registerModal')">Register</a>
+<a href="#" onclick="showSection('seller')">Sell on Corazon</a>
+<a href="#">Help</a>
+</div>
+</div>
 </div>
 
 <!-- HEADER -->
 <header>
-  <div class="header-inner">
-    <button class="menu-toggle" onclick="openDrawer()" aria-label="Menu">☰</button>
-    <div class="logo" onclick="showSection('home')">Corazon Marketplace<span>.</span></div>
-    <div class="search-bar">
-      <select class="search-cat">
-        <option>All Categories</option>
-        <option>Electronics</option>
-        <option>Fashion</option>
-        <option>Home & Living</option>
-        <option>Beauty</option>
-        <option>Automobiles</option>
-        <option>Jobs</option>
-      </select>
-      <input type="text" id="searchInput" placeholder="Search products, brands, services..." />
-      <button class="search-btn" onclick="doSearch()">🔍</button>
-    </div>
-    <div class="header-actions">
-      <button class="header-btn jobs-btn" onclick="showSection('jobs')">💼 Jobs</button>
-      <button class="header-btn store-btn" onclick="showSection('seller')">🏪 Store</button>
-      <button class="header-btn cart-btn" onclick="toggleCart()">
-        🛒 Cart
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-    </div>
-  </div>
+<div class="header-inner">
+<button class="menu-toggle" onclick="openDrawer()" aria-label="Menu">☰</button>
+<div class="logo" onclick="showSection('home')">Corazon<span>.</span></div>
+<div class="search-bar">
+<select class="search-cat">
+<option>All</option>
+<option>Electronics</option>
+<option>Fashion</option>
+<option>Home &amp; Living</option>
+<option>Beauty</option>
+<option>Automobiles</option>
+<option>Jobs</option>
+</select>
+<input type="text" id="searchInput" placeholder="Search products, brands..." />
+<button class="search-btn" onclick="doSearch()">🔍</button>
+</div>
+<div class="header-actions">
+<button class="header-btn jobs-btn" onclick="showSection('jobs')">💼 Jobs</button>
+<button class="header-btn store-btn" onclick="showSection('seller')">🏪 Store</button>
+<button class="header-btn cart-btn" onclick="toggleCart()">
+🛒 Cart
+<span class="cart-count" id="cartCount">0</span>
+</button>
+</div>
+</div>
 </header>
 
-<!-- NAV (horizontal scrollable) -->
+<!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <div class="nav-item active" onclick="setNav(this,'home')">🏠 Home</div>
-    <div class="nav-item" onclick="setNav(this,'electronics')">📱 Electronics</div>
-    <div class="nav-item" onclick="setNav(this,'fashion')">👗 Fashion</div>
-    <div class="nav-item" onclick="setNav(this,'home-living')">🏡 Home & Living</div>
-    <div class="nav-item" onclick="setNav(this,'beauty')">💄 Beauty</div>
-    <div class="nav-item" onclick="setNav(this,'automobiles')">🚗 Automobiles</div>
-    <div class="nav-item" onclick="setNav(this,'agriculture')">🌿 Agriculture</div>
-    <div class="nav-item" onclick="setNav(this,'services')">🔧 Services</div>
-    <div class="nav-item" onclick="setNav(this,'jobs');showSection('jobs')">💼 Jobs</div>
-    <div class="nav-item" onclick="setNav(this,'advertise');showModal('advertiseModal')">📢 Advertise</div>
-  </div>
+<div class="nav-inner">
+<div class="nav-item active" onclick="setNav(this,'home')">🏠 Home</div>
+<div class="nav-item" onclick="setNav(this,'electronics')">📱 Electronics</div>
+<div class="nav-item" onclick="setNav(this,'fashion')">👗 Fashion</div>
+<div class="nav-item" onclick="setNav(this,'home-living')">🏡 Home &amp; Living</div>
+<div class="nav-item" onclick="setNav(this,'beauty')">💄 Beauty</div>
+<div class="nav-item" onclick="setNav(this,'automobiles')">🚗 Automobiles</div>
+<div class="nav-item" onclick="setNav(this,'agriculture')">🌿 Agriculture</div>
+<div class="nav-item" onclick="setNav(this,'services')">🔧 Services</div>
+<div class="nav-item" onclick="setNav(this,'jobs');showSection('jobs')">💼 Jobs</div>
+<div class="nav-item" onclick="setNav(this,'advertise');showModal('advertiseModal')">📢 Advertise</div>
+</div>
 </nav>
 
 <!-- MOBILE DRAWER -->
 <div class="mobile-nav-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <div class="mobile-drawer" id="mobileDrawer">
-  <div class="drawer-header">
-    <span class="drawer-logo">Corazon<span>.</span></span>
-    <button class="drawer-close" onclick="closeDrawer()">✕</button>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Account</div>
-    <div class="drawer-item" onclick="closeDrawer();showModal('loginModal')"><span class="di-icon">👤</span>Sign In</div>
-    <div class="drawer-item" onclick="closeDrawer();showModal('registerModal')"><span class="di-icon">✨</span>Register Free</div>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Shop</div>
-    <div class="drawer-item" onclick="closeDrawer();showSection('home')"><span class="di-icon">🏠</span>Home</div>
-    <div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">📱</span>Electronics</div>
-    <div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">👗</span>Fashion</div>
-    <div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">🏡</span>Home & Living</div>
-    <div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">💄</span>Beauty</div>
-    <div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">🚗</span>Automobiles</div>
-    <div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">🌿</span>Agriculture</div>
-  </div>
-  <div class="drawer-section">
-    <div class="drawer-section-title">Sellers & Jobs</div>
-    <div class="drawer-item" onclick="closeDrawer();showSection('seller')"><span class="di-icon">🏪</span>My Store / Dashboard</div>
-    <div class="drawer-item" onclick="closeDrawer();showModal('addProductModal')"><span class="di-icon">📦</span>Add Product</div>
-    <div class="drawer-item" onclick="closeDrawer();showSection('jobs')"><span class="di-icon">💼</span>Browse Jobs</div>
-    <div class="drawer-item" onclick="closeDrawer();showModal('postJobModal')"><span class="di-icon">📝</span>Post a Job</div>
-    <div class="drawer-item" onclick="closeDrawer();showModal('advertiseModal')"><span class="di-icon">📢</span>Advertise</div>
-  </div>
+<div class="drawer-header">
+<span class="drawer-logo">Corazon<span>.</span></span>
+<button class="drawer-close" onclick="closeDrawer()">✕</button>
+</div>
+<div class="drawer-section">
+<div class="drawer-section-title">Account</div>
+<div class="drawer-item" onclick="closeDrawer();showModal('loginModal')"><span class="di-icon">👤</span>Sign In</div>
+<div class="drawer-item" onclick="closeDrawer();showModal('registerModal')"><span class="di-icon">✨</span>Register Free</div>
+</div>
+<div class="drawer-section">
+<div class="drawer-section-title">Shop</div>
+<div class="drawer-item" onclick="closeDrawer();showSection('home')"><span class="di-icon">🏠</span>Home</div>
+<div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">📱</span>Electronics</div>
+<div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">👗</span>Fashion</div>
+<div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">🏡</span>Home &amp; Living</div>
+<div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">💄</span>Beauty</div>
+<div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">🚗</span>Automobiles</div>
+<div class="drawer-item" onclick="closeDrawer()"><span class="di-icon">🌿</span>Agriculture</div>
+</div>
+<div class="drawer-section">
+<div class="drawer-section-title">Sellers &amp; Jobs</div>
+<div class="drawer-item" onclick="closeDrawer();showSection('seller')"><span class="di-icon">🏪</span>My Store / Dashboard</div>
+<div class="drawer-item" onclick="closeDrawer();showModal('addProductModal')"><span class="di-icon">📦</span>Add Product</div>
+<div class="drawer-item" onclick="closeDrawer();showSection('jobs')"><span class="di-icon">💼</span>Browse Jobs</div>
+<div class="drawer-item" onclick="closeDrawer();showModal('postJobModal')"><span class="di-icon">📝</span>Post a Job</div>
+<div class="drawer-item" onclick="closeDrawer();showModal('advertiseModal')"><span class="di-icon">📢</span>Advertise</div>
+</div>
 </div>
 
 <!-- ══════════ HOME SECTION ══════════ -->
 <div id="home-section" class="page-section active">
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          <span class="hero-badge-text">Nigeria's #1 Marketplace</span>
-        </div>
-        <h1 class="hero-title">Buy, Sell &amp;<br><span class="highlight">Grow Your</span><br>Business</h1>
-        <p class="hero-sub">Join thousands of sellers and buyers. Discover amazing products, post job listings, and connect with talent across Nigeria.</p>
-        <div class="hero-actions">
-          <button class="btn btn-primary" onclick="showModal('registerModal')">🚀 Start Selling Free</button>
-          <button class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.3)" onclick="scrollToProducts()">🛍️ Shop Now</button>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-card"><div class="stat-num">50K+</div><div class="stat-label">Active Sellers</div></div>
-          <div class="stat-card"><div class="stat-num">2M+</div><div class="stat-label">Products</div></div>
-          <div class="stat-card"><div class="stat-num">5K+</div><div class="stat-label">Jobs</div></div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="mini-card"><div class="mini-card-icon">📱</div><div class="mini-card-title">iPhone 15 Pro</div><div class="mini-card-price">₦850,000</div></div>
-        <div class="mini-card"><div class="mini-card-icon">👟</div><div class="mini-card-title">Air Jordan 4</div><div class="mini-card-price">₦65,000</div></div>
-        <div class="mini-card"><div class="mini-card-icon">💻</div><div class="mini-card-title">MacBook Air M3</div><div class="mini-card-price">₦1,200,000</div></div>
-        <div class="mini-card"><div class="mini-card-icon">🎧</div><div class="mini-card-title">AirPods Pro</div><div class="mini-card-price">₦120,000</div></div>
-      </div>
-    </div>
-  </div>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-inner">
+<div>
+<div class="hero-badge">
+<span class="hero-badge-dot"></span>
+<span class="hero-badge-text">Nigeria's #1 Marketplace</span>
+</div>
+<h1 class="hero-title">Buy, Sell &amp;<br><span class="highlight">Grow Your</span><br>Business</h1>
+<p class="hero-sub">Join thousands of sellers and buyers. Discover amazing products, post job listings, and connect with talent across Nigeria.</p>
+<div class="hero-actions">
+<button class="btn btn-primary" onclick="showModal('registerModal')">🚀 Start Selling Free</button>
+<button class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.3)" onclick="scrollToProducts()">🛍️ Shop Now</button>
+</div>
+<div class="hero-stats">
+<div class="stat-card"><div class="stat-num">50K+</div><div class="stat-label">Active Sellers</div></div>
+<div class="stat-card"><div class="stat-num">2M+</div><div class="stat-label">Products</div></div>
+<div class="stat-card"><div class="stat-num">5K+</div><div class="stat-label">Jobs</div></div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="mini-card"><div class="mini-card-icon">📱</div><div class="mini-card-title">iPhone 15 Pro</div><div class="mini-card-price">₦850,000</div></div>
+<div class="mini-card"><div class="mini-card-icon">👟</div><div class="mini-card-title">Air Jordan 4</div><div class="mini-card-price">₦65,000</div></div>
+<div class="mini-card"><div class="mini-card-icon">💻</div><div class="mini-card-title">MacBook Air M3</div><div class="mini-card-price">₦1,200,000</div></div>
+<div class="mini-card"><div class="mini-card-icon">🎧</div><div class="mini-card-title">AirPods Pro</div><div class="mini-card-price">₦120,000</div></div>
+</div>
+</div>
+</div>
 
-  <!-- AD STRIP -->
-  <div class="ad-strip">
-    <div class="ad-strip-inner">
-      <div class="ad-strip-text">🔥 FLASH SALE: Up to 70% OFF Electronics — Ends Tonight! &nbsp;&nbsp;|&nbsp;&nbsp; 🚚 Free Delivery on orders over ₦15,000 &nbsp;&nbsp;|&nbsp;&nbsp; 💼 500+ New Jobs This Week! &nbsp;&nbsp;|&nbsp;&nbsp; 🎁 New Sellers: First 3 months FREE advertising!</div>
-      <button class="ad-strip-btn" onclick="showModal('registerModal')">Join Free</button>
-    </div>
-  </div>
+<!-- AD STRIP -->
+<div class="ad-strip">
+<div class="ad-strip-inner">
+<div class="ad-strip-text">🔥 FLASH SALE: Up to 70% OFF Electronics — Ends Tonight!   |   🚚 Free Delivery on orders over ₦15,000   |   💼 500+ New Jobs This Week!   |   🎁 New Sellers: First 3 months FREE advertising!</div>
+<button class="ad-strip-btn" onclick="showModal('registerModal')">Join Free</button>
+</div>
+</div>
 
-  <!-- CATEGORIES -->
-  <div class="section">
-    <div class="section-header">
-      <h2 class="section-title">Shop by <span>Category</span></h2>
-    </div>
-    <div class="cats-grid">
-      <div class="cat-card"><div class="cat-icon">📱</div><div class="cat-name">Electronics</div></div>
-      <div class="cat-card"><div class="cat-icon">👗</div><div class="cat-name">Fashion</div></div>
-      <div class="cat-card"><div class="cat-icon">🏡</div><div class="cat-name">Home & Living</div></div>
-      <div class="cat-card"><div class="cat-icon">💄</div><div class="cat-name">Beauty</div></div>
-      <div class="cat-card"><div class="cat-icon">🚗</div><div class="cat-name">Automobiles</div></div>
-      <div class="cat-card"><div class="cat-icon">📚</div><div class="cat-name">Books</div></div>
-      <div class="cat-card"><div class="cat-icon">🌿</div><div class="cat-name">Agriculture</div></div>
-      <div class="cat-card"><div class="cat-icon">🔧</div><div class="cat-name">Services</div></div>
-    </div>
-  </div>
+<!-- CATEGORIES -->
+<div class="section">
+<div class="section-header">
+<h2 class="section-title">Shop by <span>Category</span></h2>
+</div>
+<div class="cats-grid">
+<div class="cat-card"><div class="cat-icon">📱</div><div class="cat-name">Electronics</div></div>
+<div class="cat-card"><div class="cat-icon">👗</div><div class="cat-name">Fashion</div></div>
+<div class="cat-card"><div class="cat-icon">🏡</div><div class="cat-name">Home &amp; Living</div></div>
+<div class="cat-card"><div class="cat-icon">💄</div><div class="cat-name">Beauty</div></div>
+<div class="cat-card"><div class="cat-icon">🚗</div><div class="cat-name">Automobiles</div></div>
+<div class="cat-card"><div class="cat-icon">📚</div><div class="cat-name">Books</div></div>
+<div class="cat-card"><div class="cat-icon">🌿</div><div class="cat-name">Agriculture</div></div>
+<div class="cat-card"><div class="cat-icon">🔧</div><div class="cat-name">Services</div></div>
+</div>
+</div>
 
-  <!-- FEATURED BANNERS -->
-  <div class="section" style="margin-top:0">
-    <div class="featured-grid">
-      <div class="feat-main" onclick="scrollToProducts()">
-        <div class="feat-main-label">⚡ Flash Deals</div>
-        <h2 class="feat-main-title">Electronics Up to<br>70% Off Today</h2>
-        <p class="feat-main-sub">Phones, laptops, accessories & more</p>
-        <button class="btn btn-primary btn-sm">Shop Now →</button>
-      </div>
-      <div class="feat-side feat-side-1" onclick="showSection('jobs')">
-        <div class="feat-side-icon">💼</div>
-        <div>
-          <div class="feat-side-title">Find Your Dream Job</div>
-          <p class="feat-side-sub">500+ openings across Nigeria</p>
-          <button class="btn btn-dark btn-sm" style="margin-top:10px">Browse Jobs →</button>
-        </div>
-      </div>
-      <div class="feat-side feat-side-2" onclick="showModal('addProductModal')">
-        <div class="feat-side-icon">🏪</div>
-        <div>
-          <div class="feat-side-title">Start Selling Today</div>
-          <p class="feat-side-sub">Reach millions of buyers free</p>
-          <button class="btn btn-dark btn-sm" style="margin-top:10px">List Product →</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- FEATURED BANNERS -->
+<div class="section" style="margin-top:0">
+<div class="featured-grid">
+<div class="feat-main" onclick="scrollToProducts()">
+<div class="feat-main-label">⚡ Flash Deals</div>
+<h2 class="feat-main-title">Electronics Up to<br>70% Off Today</h2>
+<p class="feat-main-sub">Phones, laptops, accessories &amp; more</p>
+<button class="btn btn-primary btn-sm">Shop Now →</button>
+</div>
+<div class="feat-side feat-side-1" onclick="showSection('jobs')">
+<div class="feat-side-icon">💼</div>
+<div>
+<div class="feat-side-title">Find Your Dream Job</div>
+<p class="feat-side-sub">500+ openings across Nigeria</p>
+<button class="btn btn-dark btn-sm" style="margin-top:10px">Browse Jobs →</button>
+</div>
+</div>
+<div class="feat-side feat-side-2" onclick="showModal('addProductModal')">
+<div class="feat-side-icon">🏪</div>
+<div>
+<div class="feat-side-title">Start Selling Today</div>
+<p class="feat-side-sub">Reach millions of buyers free</p>
+<button class="btn btn-dark btn-sm" style="margin-top:10px">List Product →</button>
+</div>
+</div>
+</div>
+</div>
 
-  <!-- SPONSORED ADS -->
-  <div class="section" style="margin-top:0">
-    <div class="ad-products">
-      <div class="ad-products-header">
-        <span class="ad-tag">📢 SPONSORED</span>
-        <h2 class="section-title" style="margin:0">Featured <span>Advertisements</span></h2>
-        <button class="btn btn-outline btn-sm" onclick="showModal('advertiseModal')" style="margin-left:auto">Advertise Here</button>
-      </div>
-      <div class="ad-products-grid" id="adProductsGrid">
-        <div class="ad-product-card">
-          <div class="ad-product-badge">📢 Ad</div>
-          <div class="ad-product-icon">🌾</div>
-          <div class="ad-product-name">Premium Rice 50kg Bag</div>
-          <div class="ad-product-price">₦45,000</div>
-          <div class="ad-product-seller">by FarmFresh Ltd</div>
-          <button class="btn btn-primary btn-sm" style="margin-top:10px;width:100%" onclick="addToCart('Premium Rice',45000,'🌾')">Add to Cart</button>
-        </div>
-        <div class="ad-product-card">
-          <div class="ad-product-badge">📢 Ad</div>
-          <div class="ad-product-icon">💊</div>
-          <div class="ad-product-name">Health Supplement Pack</div>
-          <div class="ad-product-price">₦12,500</div>
-          <div class="ad-product-seller">by VitalCare NG</div>
-          <button class="btn btn-primary btn-sm" style="margin-top:10px;width:100%" onclick="addToCart('Health Supplement',12500,'💊')">Add to Cart</button>
-        </div>
-        <div class="ad-product-card">
-          <div class="ad-product-badge">🔥 Hot Ad</div>
-          <div class="ad-product-icon">⚡</div>
-          <div class="ad-product-name">Solar Panel 400W Kit</div>
-          <div class="ad-product-price">₦180,000</div>
-          <div class="ad-product-seller">by SunPower NG</div>
-          <button class="btn btn-primary btn-sm" style="margin-top:10px;width:100%" onclick="addToCart('Solar Panel Kit',180000,'⚡')">Add to Cart</button>
-        </div>
-        <div class="ad-product-card">
-          <div class="ad-product-badge">📢 Ad</div>
-          <div class="ad-product-icon">🏗️</div>
-          <div class="ad-product-name">Block & Cement Package</div>
-          <div class="ad-product-price">₦250,000</div>
-          <div class="ad-product-seller">by BuildMart NG</div>
-          <button class="btn btn-primary btn-sm" style="margin-top:10px;width:100%" onclick="addToCart('Block & Cement',250000,'🏗️')">Add to Cart</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- SPONSORED ADS -->
+<div class="section" style="margin-top:0">
+<div class="ad-products">
+<div class="ad-products-header">
+<span class="ad-tag">📢 SPONSORED</span>
+<h2 class="section-title" style="margin:0">Featured <span>Advertisements</span></h2>
+<button class="btn btn-outline btn-sm" onclick="showModal('advertiseModal')" style="margin-left:auto">Advertise Here</button>
+</div>
+<div class="ad-products-grid" id="adProductsGrid">
+<div class="ad-product-card">
+<div class="ad-product-badge">📢 Ad</div>
+<div class="ad-product-icon">🌾</div>
+<div class="ad-product-name">Premium Rice 50kg Bag</div>
+<div class="ad-product-price">₦45,000</div>
+<div class="ad-product-seller">by FarmFresh Ltd</div>
+<button class="btn btn-primary btn-sm" style="margin-top:10px;width:100%" onclick="addToCart('Premium Rice',45000,'🌾')">Add to Cart</button>
+</div>
+<div class="ad-product-card">
+<div class="ad-product-badge">📢 Ad</div>
+<div class="ad-product-icon">💊</div>
+<div class="ad-product-name">Health Supplement Pack</div>
+<div class="ad-product-price">₦12,500</div>
+<div class="ad-product-seller">by VitalCare NG</div>
+<button class="btn btn-primary btn-sm" style="margin-top:10px;width:100%" onclick="addToCart('Health Supplement',12500,'💊')">Add to Cart</button>
+</div>
+<div class="ad-product-card">
+<div class="ad-product-badge">🔥 Hot Ad</div>
+<div class="ad-product-icon">⚡</div>
+<div class="ad-product-name">Solar Panel 400W Kit</div>
+<div class="ad-product-price">₦180,000</div>
+<div class="ad-product-seller">by SunPower NG</div>
+<button class="btn btn-primary btn-sm" style="margin-top:10px;width:100%" onclick="addToCart('Solar Panel Kit',180000,'⚡')">Add to Cart</button>
+</div>
+<div class="ad-product-card">
+<div class="ad-product-badge">📢 Ad</div>
+<div class="ad-product-icon">🏗️</div>
+<div class="ad-product-name">Block &amp; Cement Package</div>
+<div class="ad-product-price">₦250,000</div>
+<div class="ad-product-seller">by BuildMart NG</div>
+<button class="btn btn-primary btn-sm" style="margin-top:10px;width:100%" onclick="addToCart('Block & Cement',250000,'🏗️')">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
 
-  <!-- PRODUCTS -->
-  <div class="section" id="productsSection">
-    <div class="section-header">
-      <h2 class="section-title">🔥 <span>Trending</span> Products</h2>
-      <a class="see-all">See all →</a>
-    </div>
-    <div class="products-grid" id="productsGrid"></div>
-  </div>
+<!-- PRODUCTS -->
+<div class="section" id="productsSection">
+<div class="section-header">
+<h2 class="section-title">🔥 <span>Trending</span> Products</h2>
+<a class="see-all">See all →</a>
+</div>
+<div class="products-grid" id="productsGrid"></div>
+</div>
 
-  <!-- JOBS PREVIEW -->
-  <div class="section">
-    <div class="section-header">
-      <h2 class="section-title">💼 Latest <span>Jobs</span></h2>
-      <a class="see-all" onclick="showSection('jobs')">View all →</a>
-    </div>
-    <div class="jobs-grid" id="homeJobsGrid"></div>
-  </div>
+<!-- JOBS PREVIEW -->
+<div class="section">
+<div class="section-header">
+<h2 class="section-title">💼 Latest <span>Jobs</span></h2>
+<a class="see-all" onclick="showSection('jobs')">View all →</a>
+</div>
+<div class="jobs-grid" id="homeJobsGrid"></div>
+</div>
 
 </div><!-- end home -->
 
 <!-- ══════════ JOBS SECTION ══════════ -->
 <div id="jobs-section" class="page-section">
-  <div class="recruit-hero">
-    <h1 class="recruit-hero-title">Find Your Next <span>Opportunity</span></h1>
-    <p class="recruit-hero-sub">Connect with top employers across Nigeria. Thousands of jobs in tech, finance, engineering, creative and more.</p>
-    <div class="recruit-search">
-      <input type="text" placeholder="Job title, skill, or company..." />
-      <button>🔍 Search Jobs</button>
-    </div>
-    <div class="recruit-stats">
-      <div class="r-stat"><div class="r-stat-num">5,200+</div><div class="r-stat-label">Active Jobs</div></div>
-      <div class="r-stat"><div class="r-stat-num">1,800+</div><div class="r-stat-label">Companies</div></div>
-      <div class="r-stat"><div class="r-stat-num">28K+</div><div class="r-stat-label">Job Seekers</div></div>
-    </div>
-  </div>
-  <div class="section">
-    <div class="employer-cta">
-      <div class="employer-cta-text">
-        <h3>Hiring? Post a Job Today</h3>
-        <p>Reach thousands of qualified candidates across Nigeria. First job post is FREE!</p>
-      </div>
-      <button class="btn btn-dark" onclick="showModal('postJobModal')" style="white-space:nowrap;flex-shrink:0">📝 Post a Job Free</button>
-    </div>
-    <div class="section-header">
-      <h2 class="section-title">All <span>Job Listings</span></h2>
-      <button class="btn btn-primary btn-sm" onclick="showModal('postJobModal')">+ Post Job</button>
-    </div>
-    <div class="jobs-grid" id="allJobsGrid"></div>
-  </div>
+<div class="recruit-hero">
+<h1 class="recruit-hero-title">Find Your Next <span>Opportunity</span></h1>
+<p class="recruit-hero-sub">Connect with top employers across Nigeria. Thousands of jobs in tech, finance, engineering, creative and more.</p>
+<div class="recruit-search">
+<input type="text" placeholder="Job title, skill, or company..." />
+<button>🔍 Search Jobs</button>
+</div>
+<div class="recruit-stats">
+<div class="r-stat"><div class="r-stat-num">5,200+</div><div class="r-stat-label">Active Jobs</div></div>
+<div class="r-stat"><div class="r-stat-num">1,800+</div><div class="r-stat-label">Companies</div></div>
+<div class="r-stat"><div class="r-stat-num">28K+</div><div class="r-stat-label">Job Seekers</div></div>
+</div>
+</div>
+<div class="section">
+<div class="employer-cta">
+<div class="employer-cta-text">
+<h3>Hiring? Post a Job Today</h3>
+<p>Reach thousands of qualified candidates across Nigeria. First job post is FREE!</p>
+</div>
+<button class="btn btn-dark" onclick="showModal('postJobModal')" style="white-space:nowrap;flex-shrink:0">📝 Post a Job Free</button>
+</div>
+<div class="section-header">
+<h2 class="section-title">All <span>Job Listings</span></h2>
+<button class="btn btn-primary btn-sm" onclick="showModal('postJobModal')">+ Post Job</button>
+</div>
+<div class="jobs-grid" id="allJobsGrid"></div>
+</div>
 </div>
 
 <!-- ══════════ SELLER DASHBOARD ══════════ -->
 <div id="seller-section" class="page-section">
-  <div class="dashboard">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
-      <div>
-        <h1 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800">Seller Dashboard</h1>
-        <p style="color:var(--gray-600);font-size:13px;margin-top:3px">Welcome back! Here's your store overview.</p>
-      </div>
-      <button class="btn btn-primary btn-sm" onclick="showModal('addProductModal')">+ Add Product</button>
-    </div>
-    <!-- Mobile quick actions -->
-    <div style="display:none" id="mobileQuickActions">
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
-        <div style="background:#fff;border-radius:10px;padding:12px;text-align:center;cursor:pointer;box-shadow:var(--shadow-sm)" onclick="showModal('addProductModal')"><div style="font-size:22px">📦</div><div style="font-size:11px;font-weight:600;color:var(--gray-600);margin-top:4px">Products</div></div>
-        <div style="background:#fff;border-radius:10px;padding:12px;text-align:center;cursor:pointer;box-shadow:var(--shadow-sm)"><div style="font-size:22px">🛒</div><div style="font-size:11px;font-weight:600;color:var(--gray-600);margin-top:4px">Orders</div></div>
-        <div style="background:#fff;border-radius:10px;padding:12px;text-align:center;cursor:pointer;box-shadow:var(--shadow-sm)" onclick="showModal('advertiseModal')"><div style="font-size:22px">📢</div><div style="font-size:11px;font-weight:600;color:var(--gray-600);margin-top:4px">Advertise</div></div>
-        <div style="background:#fff;border-radius:10px;padding:12px;text-align:center;cursor:pointer;box-shadow:var(--shadow-sm)"><div style="font-size:22px">💰</div><div style="font-size:11px;font-weight:600;color:var(--gray-600);margin-top:4px">Earnings</div></div>
-      </div>
-    </div>
-    <div class="dash-grid">
-      <div class="dash-sidebar">
-        <div style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Navigation</div>
-        <div class="dash-menu-item active"><span>📊</span> Dashboard</div>
-        <div class="dash-menu-item" onclick="showModal('addProductModal')"><span>📦</span> My Products</div>
-        <div class="dash-menu-item"><span>🛒</span> Orders</div>
-        <div class="dash-menu-item"><span>💰</span> Earnings</div>
-        <div class="dash-menu-item" onclick="showModal('advertiseModal')"><span>📢</span> Advertise</div>
-        <div class="dash-menu-item"><span>⭐</span> Reviews</div>
-        <div class="dash-menu-item"><span>⚙️</span> Settings</div>
-        <div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--gray-200)">
-          <div style="font-size:12px;color:var(--gray-400);margin-bottom:6px">Store Completion</div>
-          <div style="background:var(--gray-200);border-radius:99px;height:5px;overflow:hidden">
-            <div style="width:72%;height:100%;background:var(--primary);border-radius:99px"></div>
-          </div>
-          <div style="font-size:12px;font-weight:600;color:var(--primary);margin-top:3px">72% Complete</div>
-        </div>
-      </div>
-      <div class="dash-content">
-        <div class="dash-stats">
-          <div class="dash-stat"><div class="dash-stat-value">₦248K</div><div class="dash-stat-label">Total Revenue</div><div class="dash-stat-change up">↑ 12% this month</div></div>
-          <div class="dash-stat"><div class="dash-stat-value">34</div><div class="dash-stat-label">Products Listed</div><div class="dash-stat-change up">↑ 3 this week</div></div>
-          <div class="dash-stat"><div class="dash-stat-value">127</div><div class="dash-stat-label">Orders</div><div class="dash-stat-change down">↓ 2 pending</div></div>
-          <div class="dash-stat"><div class="dash-stat-value">4.8 ⭐</div><div class="dash-stat-label">Avg Rating</div><div class="dash-stat-change up">89 reviews</div></div>
-        </div>
-        <div class="dash-card">
-          <div class="dash-card-title">📦 My Products</div>
-          <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
-            <table class="product-table">
-              <thead><tr><th>Product</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead>
-              <tbody id="sellerProductsTable"></tbody>
-            </table>
-          </div>
-        </div>
-        <div class="dash-card">
-          <div class="dash-card-title">📢 Active Advertisements</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="sellerAds">
-            <div style="border:1.5px dashed var(--gray-200);border-radius:10px;padding:18px;text-align:center;cursor:pointer" onclick="showModal('advertiseModal')">
-              <div style="font-size:28px;margin-bottom:6px">➕</div>
-              <div style="font-size:13px;font-weight:600;color:var(--gray-600)">Create New Ad</div>
-              <div style="font-size:12px;color:var(--gray-400)">Boost your products</div>
-            </div>
-            <div style="background:linear-gradient(135deg,var(--primary-light),#fff);border:1.5px solid #FFD0A8;border-radius:10px;padding:14px">
-              <div style="font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;margin-bottom:5px">Active Ad</div>
-              <div style="font-size:13px;font-weight:600">Laptop Bag Premium</div>
-              <div style="font-size:11px;color:var(--gray-400);margin-top:3px">Ends: Jul 30, 2025</div>
-              <div style="display:flex;gap:6px;margin-top:8px;font-size:11px;flex-wrap:wrap">
-                <span style="background:#E8F5E9;color:#2E7D32;padding:2px 7px;border-radius:99px;font-weight:600">1,240 Views</span>
-                <span style="background:#E3F2FD;color:#1565C0;padding:2px 7px;border-radius:99px;font-weight:600">48 Clicks</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="dashboard">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px">
+<div>
+<h1 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800">Seller Dashboard</h1>
+<p style="color:var(--gray-600);font-size:13px;margin-top:3px">Welcome back! Here's your store overview.</p>
+</div>
+<button class="btn btn-primary btn-sm" onclick="showModal('addProductModal')">+ Add Product</button>
+</div>
+<!-- Mobile quick actions -->
+<div id="mobileQuickActions" style="display:none">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:16px">
+<div style="background:#fff;border-radius:10px;padding:12px;text-align:center;cursor:pointer;box-shadow:var(--shadow-sm)" onclick="showModal('addProductModal')"><div style="font-size:22px">📦</div><div style="font-size:11px;font-weight:600;color:var(--gray-600);margin-top:4px">Products</div></div>
+<div style="background:#fff;border-radius:10px;padding:12px;text-align:center;cursor:pointer;box-shadow:var(--shadow-sm)"><div style="font-size:22px">🛒</div><div style="font-size:11px;font-weight:600;color:var(--gray-600);margin-top:4px">Orders</div></div>
+<div style="background:#fff;border-radius:10px;padding:12px;text-align:center;cursor:pointer;box-shadow:var(--shadow-sm)" onclick="showModal('advertiseModal')"><div style="font-size:22px">📢</div><div style="font-size:11px;font-weight:600;color:var(--gray-600);margin-top:4px">Advertise</div></div>
+<div style="background:#fff;border-radius:10px;padding:12px;text-align:center;cursor:pointer;box-shadow:var(--shadow-sm)"><div style="font-size:22px">💰</div><div style="font-size:11px;font-weight:600;color:var(--gray-600);margin-top:4px">Earnings</div></div>
+</div>
+</div>
+<div class="dash-grid">
+<div class="dash-sidebar">
+<div style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Navigation</div>
+<div class="dash-menu-item active"><span>📊</span> Dashboard</div>
+<div class="dash-menu-item" onclick="showModal('addProductModal')"><span>📦</span> My Products</div>
+<div class="dash-menu-item"><span>🛒</span> Orders</div>
+<div class="dash-menu-item"><span>💰</span> Earnings</div>
+<div class="dash-menu-item" onclick="showModal('advertiseModal')"><span>📢</span> Advertise</div>
+<div class="dash-menu-item"><span>⭐</span> Reviews</div>
+<div class="dash-menu-item"><span>⚙️</span> Settings</div>
+<div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--gray-200)">
+<div style="font-size:12px;color:var(--gray-400);margin-bottom:6px">Store Completion</div>
+<div style="background:var(--gray-200);border-radius:99px;height:5px;overflow:hidden">
+<div style="width:72%;height:100%;background:var(--primary);border-radius:99px"></div>
+</div>
+<div style="font-size:12px;font-weight:600;color:var(--primary);margin-top:3px">72% Complete</div>
+</div>
+</div>
+<div class="dash-content">
+<div class="dash-stats">
+<div class="dash-stat"><div class="dash-stat-value">₦248K</div><div class="dash-stat-label">Total Revenue</div><div class="dash-stat-change up">↑ 12% this month</div></div>
+<div class="dash-stat"><div class="dash-stat-value">34</div><div class="dash-stat-label">Products Listed</div><div class="dash-stat-change up">↑ 3 this week</div></div>
+<div class="dash-stat"><div class="dash-stat-value">127</div><div class="dash-stat-label">Orders</div><div class="dash-stat-change down">↓ 2 pending</div></div>
+<div class="dash-stat"><div class="dash-stat-value">4.8 ⭐</div><div class="dash-stat-label">Avg Rating</div><div class="dash-stat-change up">89 reviews</div></div>
+</div>
+<div class="dash-card">
+<div class="dash-card-title">📦 My Products</div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+<table class="product-table">
+<thead><tr><th>Product</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="sellerProductsTable"></tbody>
+</table>
+</div>
+</div>
+<div class="dash-card">
+<div class="dash-card-title">📢 Active Advertisements</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="sellerAds">
+<div style="border:1.5px dashed var(--gray-200);border-radius:10px;padding:16px;text-align:center;cursor:pointer" onclick="showModal('advertiseModal')">
+<div style="font-size:28px;margin-bottom:6px">➕</div>
+<div style="font-size:13px;font-weight:600;color:var(--gray-600)">Create New Ad</div>
+<div style="font-size:12px;color:var(--gray-400)">Boost your products</div>
+</div>
+<div style="background:linear-gradient(135deg,var(--primary-light),#fff);border:1.5px solid #FFD0A8;border-radius:10px;padding:14px">
+<div style="font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;margin-bottom:5px">Active Ad</div>
+<div style="font-size:13px;font-weight:600">Laptop Bag Premium</div>
+<div style="font-size:11px;color:var(--gray-400);margin-top:3px">Ends: Jul 30, 2025</div>
+<div style="display:flex;gap:6px;margin-top:8px;font-size:11px;flex-wrap:wrap">
+<span style="background:#E8F5E9;color:#2E7D32;padding:2px 7px;border-radius:99px;font-weight:600">1,240 Views</span>
+<span style="background:#E3F2FD;color:#1565C0;padding:2px 7px;border-radius:99px;font-weight:600">48 Clicks</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <!-- ══════════ MODALS ══════════ -->
 
 <!-- LOGIN -->
 <div class="modal-overlay" id="loginModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
-    <h2 class="modal-title">Welcome Back 👋</h2>
-    <p class="modal-sub">Sign in to your Corazon account</p>
-    <div class="tab-row">
-      <div class="tab active" onclick="switchTab(this,'loginTab')">Buyer / Seller</div>
-      <div class="tab" onclick="switchTab(this,'employerTab')">Employer</div>
-    </div>
-    <div id="loginTab" class="tab-content active">
-      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
-      <div class="form-group"><label>Password</label><input type="password" placeholder="••••••••"></div>
-      <button class="btn btn-primary" style="width:100%;padding:14px" onclick="handleLogin()">Sign In →</button>
-      <p style="text-align:center;margin-top:14px;font-size:13px;color:var(--gray-600)">No account? <a href="#" style="color:var(--primary)" onclick="closeModal('loginModal');showModal('registerModal')">Register here</a></p>
-    </div>
-    <div id="employerTab" class="tab-content">
-      <div class="form-group"><label>Company Email</label><input type="email" placeholder="hr@company.com"></div>
-      <div class="form-group"><label>Password</label><input type="password" placeholder="••••••••"></div>
-      <button class="btn btn-green" style="width:100%;padding:14px" onclick="handleLogin()">Sign In as Employer →</button>
-    </div>
-  </div>
+<div class="modal">
+<button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+<h2 class="modal-title">Welcome Back 👋</h2>
+<p class="modal-sub">Sign in to your Corazon account</p>
+<div class="tab-row">
+<div class="tab active" onclick="switchTab(this,'loginTab')">Buyer / Seller</div>
+<div class="tab" onclick="switchTab(this,'employerTab')">Employer</div>
+</div>
+<div id="loginTab" class="tab-content active">
+<div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+<div class="form-group"><label>Password</label><input type="password" placeholder="••••••••"></div>
+<button class="btn btn-primary" style="width:100%;padding:14px" onclick="handleLogin()">Sign In →</button>
+<p style="text-align:center;margin-top:14px;font-size:13px;color:var(--gray-600)">No account? <a href="#" style="color:var(--primary)" onclick="closeModal('loginModal');showModal('registerModal')">Register here</a></p>
+</div>
+<div id="employerTab" class="tab-content">
+<div class="form-group"><label>Company Email</label><input type="email" placeholder="hr@company.com"></div>
+<div class="form-group"><label>Password</label><input type="password" placeholder="••••••••"></div>
+<button class="btn btn-green" style="width:100%;padding:14px" onclick="handleLogin()">Sign In as Employer →</button>
+</div>
+</div>
 </div>
 
 <!-- REGISTER -->
 <div class="modal-overlay" id="registerModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('registerModal')">✕</button>
-    <h2 class="modal-title">Create Account ✨</h2>
-    <p class="modal-sub">Join Corazon — buy, sell, and find talent</p>
-    <div class="tab-row">
-      <div class="tab active" onclick="switchTab(this,'buyerTab')">Buyer</div>
-      <div class="tab" onclick="switchTab(this,'sellerRegTab')">Seller</div>
-      <div class="tab" onclick="switchTab(this,'employerRegTab')">Employer</div>
-    </div>
-    <div id="buyerTab" class="tab-content active">
-      <div class="form-row">
-        <div class="form-group"><label>First Name</label><input placeholder="John"></div>
-        <div class="form-group"><label>Last Name</label><input placeholder="Doe"></div>
-      </div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com"></div>
-      <div class="form-group"><label>Phone</label><input type="tel" placeholder="+234 800 000 0000"></div>
-      <div class="form-group"><label>Password</label><input type="password" placeholder="Min 8 characters"></div>
-      <button class="btn btn-primary" style="width:100%;padding:14px" onclick="handleRegister('Buyer')">Create Account →</button>
-    </div>
-    <div id="sellerRegTab" class="tab-content">
-      <div class="form-group"><label>Store / Business Name</label><input placeholder="e.g. Chike's Electronics"></div>
-      <div class="form-group"><label>Business Category</label><select><option>Select Category</option><option>Electronics</option><option>Fashion</option><option>Food & Beverages</option><option>Agriculture</option><option>Home & Living</option><option>Beauty</option></select></div>
-      <div class="form-group"><label>Your Name</label><input placeholder="Full Name"></div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="store@example.com"></div>
-      <div class="form-group"><label>Phone</label><input type="tel" placeholder="+234 800 000 0000"></div>
-      <div class="form-group"><label>Password</label><input type="password" placeholder="Min 8 characters"></div>
-      <button class="btn btn-primary" style="width:100%;padding:14px" onclick="handleRegister('Seller')">Register as Seller →</button>
-    </div>
-    <div id="employerRegTab" class="tab-content">
-      <div class="form-group"><label>Company Name</label><input placeholder="Acme Corporation"></div>
-      <div class="form-group"><label>Industry</label><select><option>Select Industry</option><option>Technology</option><option>Finance / Banking</option><option>Oil & Gas</option><option>Healthcare</option><option>FMCG</option><option>Construction</option><option>Education</option></select></div>
-      <div class="form-group"><label>Contact Person</label><input placeholder="HR Manager Name"></div>
-      <div class="form-group"><label>Work Email</label><input type="email" placeholder="hr@company.com"></div>
-      <div class="form-group"><label>Phone</label><input type="tel" placeholder="+234 800 000 0000"></div>
-      <div class="form-group"><label>Password</label><input type="password" placeholder="Min 8 characters"></div>
-      <button class="btn btn-green" style="width:100%;padding:14px" onclick="handleRegister('Employer')">Register as Employer →</button>
-    </div>
-  </div>
+<div class="modal">
+<button class="modal-close" onclick="closeModal('registerModal')">✕</button>
+<h2 class="modal-title">Create Account ✨</h2>
+<p class="modal-sub">Join Corazon — buy, sell, and find talent</p>
+<div class="tab-row">
+<div class="tab active" onclick="switchTab(this,'buyerTab')">Buyer</div>
+<div class="tab" onclick="switchTab(this,'sellerRegTab')">Seller</div>
+<div class="tab" onclick="switchTab(this,'employerRegTab')">Employer</div>
+</div>
+<div id="buyerTab" class="tab-content active">
+<div class="form-row">
+<div class="form-group"><label>First Name</label><input placeholder="John"></div>
+<div class="form-group"><label>Last Name</label><input placeholder="Doe"></div>
+</div>
+<div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+<div class="form-group"><label>Phone</label><input type="tel" placeholder="+234 800 000 0000"></div>
+<div class="form-group"><label>Password</label><input type="password" placeholder="Min 8 characters"></div>
+<button class="btn btn-primary" style="width:100%;padding:14px" onclick="handleRegister('Buyer')">Create Account →</button>
+</div>
+<div id="sellerRegTab" class="tab-content">
+<div class="form-group"><label>Store / Business Name</label><input placeholder="e.g. Chike's Electronics"></div>
+<div class="form-group"><label>Business Category</label><select><option>Select Category</option><option>Electronics</option><option>Fashion</option><option>Food &amp; Beverages</option><option>Agriculture</option><option>Home &amp; Living</option><option>Beauty</option></select></div>
+<div class="form-group"><label>Your Name</label><input placeholder="Full Name"></div>
+<div class="form-group"><label>Email</label><input type="email" placeholder="store@example.com"></div>
+<div class="form-group"><label>Phone</label><input type="tel" placeholder="+234 800 000 0000"></div>
+<div class="form-group"><label>Password</label><input type="password" placeholder="Min 8 characters"></div>
+<button class="btn btn-primary" style="width:100%;padding:14px" onclick="handleRegister('Seller')">Register as Seller →</button>
+</div>
+<div id="employerRegTab" class="tab-content">
+<div class="form-group"><label>Company Name</label><input placeholder="Acme Corporation"></div>
+<div class="form-group"><label>Industry</label><select><option>Select Industry</option><option>Technology</option><option>Finance / Banking</option><option>Oil &amp; Gas</option><option>Healthcare</option><option>FMCG</option><option>Construction</option><option>Education</option></select></div>
+<div class="form-group"><label>Contact Person</label><input placeholder="HR Manager Name"></div>
+<div class="form-group"><label>Work Email</label><input type="email" placeholder="hr@company.com"></div>
+<div class="form-group"><label>Phone</label><input type="tel" placeholder="+234 800 000 0000"></div>
+<div class="form-group"><label>Password</label><input type="password" placeholder="Min 8 characters"></div>
+<button class="btn btn-green" style="width:100%;padding:14px" onclick="handleRegister('Employer')">Register as Employer →</button>
+</div>
+</div>
 </div>
 
 <!-- ADD PRODUCT -->
 <div class="modal-overlay" id="addProductModal">
-  <div class="modal" style="max-width:600px">
-    <button class="modal-close" onclick="closeModal('addProductModal')">✕</button>
-    <h2 class="modal-title">📦 List a Product</h2>
-    <p class="modal-sub">Add a product to sell on Corazon Marketplace</p>
-    <div class="form-group"><label>Product Name *</label><input id="pName" placeholder="e.g. Samsung Galaxy S24 Ultra"></div>
-    <div class="form-row">
-      <div class="form-group"><label>Category *</label><select id="pCat"><option value="">Select</option><option>📱 Electronics</option><option>👗 Fashion</option><option>🏡 Home & Living</option><option>💄 Beauty</option><option>🚗 Automobiles</option><option>🌿 Agriculture</option><option>🔧 Services</option></select></div>
-      <div class="form-group"><label>Price (₦) *</label><input id="pPrice" type="number" placeholder="0.00"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Original Price (₦)</label><input id="pOldPrice" type="number" placeholder="For discount display"></div>
-      <div class="form-group"><label>Stock Quantity *</label><input id="pStock" type="number" placeholder="e.g. 50"></div>
-    </div>
-    <div class="form-group"><label>Description *</label><textarea id="pDesc" rows="3" placeholder="Describe your product — features, condition, specs..."></textarea></div>
-    <div class="form-group">
-      <label>Product Emoji / Icon</label>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px" id="emojiPicker">
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'📱')">📱</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'💻')">💻</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'🎧')">🎧</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'👗')">👗</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'👟')">👟</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'🏠')">🏠</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'🌿')">🌿</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'🚗')">🚗</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'💊')">💊</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'⚡')">⚡</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'🔧')">🔧</span>
-        <span style="cursor:pointer;font-size:24px;padding:4px;border-radius:6px" onclick="selectEmoji(this,'📦')">📦</span>
-      </div>
-      <input id="pEmoji" type="hidden" value="📦">
-    </div>
-    <div class="form-group" style="display:flex;align-items:center;gap:10px;background:var(--gray-50);padding:12px;border-radius:8px">
-      <input type="checkbox" id="pAdvertise" style="width:auto;margin:0">
-      <label for="pAdvertise" style="margin:0;cursor:pointer;font-size:14px">📢 Advertise this product on the homepage</label>
-    </div>
-    <div style="display:flex;gap:10px;margin-top:4px">
-      <button class="btn btn-primary" style="flex:1;padding:14px" onclick="submitProduct()">🚀 List Product</button>
-      <button class="btn btn-outline" style="flex:1;padding:14px" onclick="closeModal('addProductModal')">Cancel</button>
-    </div>
-  </div>
+<div class="modal" style="max-width:600px">
+<button class="modal-close" onclick="closeModal('addProductModal')">✕</button>
+<h2 class="modal-title">📦 List a Product</h2>
+<p class="modal-sub">Add a product to sell on Corazon Marketplace</p>
+<div class="form-group"><label>Product Name *</label><input id="pName" placeholder="e.g. Samsung Galaxy S24 Ultra"></div>
+<div class="form-row">
+<div class="form-group"><label>Category *</label><select id="pCat"><option value="">Select</option><option>📱 Electronics</option><option>👗 Fashion</option><option>🏡 Home &amp; Living</option><option>💄 Beauty</option><option>🚗 Automobiles</option><option>🌿 Agriculture</option><option>🔧 Services</option></select></div>
+<div class="form-group"><label>Price (₦) *</label><input id="pPrice" type="number" placeholder="0.00"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Original Price (₦)</label><input id="pOldPrice" type="number" placeholder="For discount display"></div>
+<div class="form-group"><label>Stock Quantity *</label><input id="pStock" type="number" placeholder="e.g. 50"></div>
+</div>
+<div class="form-group"><label>Description *</label><textarea id="pDesc" rows="3" placeholder="Describe your product — features, condition, specs..."></textarea></div>
+<div class="form-group">
+<label>Product Emoji / Icon</label>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px" id="emojiPicker">
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'📱')">📱</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'💻')">💻</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'🎧')">🎧</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'👗')">👗</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'👟')">👟</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'🏠')">🏠</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'🌿')">🌿</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'🚗')">🚗</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'💊')">💊</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'⚡')">⚡</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'🔧')">🔧</span>
+<span style="cursor:pointer;font-size:24px;padding:6px;border-radius:6px" onclick="selectEmoji(this,'📦')">📦</span>
+</div>
+<input id="pEmoji" type="hidden" value="📦">
+</div>
+<div class="form-group" style="display:flex;align-items:center;gap:10px;background:var(--gray-50);padding:12px;border-radius:8px">
+<input type="checkbox" id="pAdvertise" style="width:auto;margin:0;width:20px;height:20px">
+<label for="pAdvertise" style="margin:0;cursor:pointer;font-size:14px">📢 Advertise this product on the homepage</label>
+</div>
+<div style="display:flex;gap:10px;margin-top:4px">
+<button class="btn btn-primary" style="flex:1;padding:14px" onclick="submitProduct()">🚀 List Product</button>
+<button class="btn btn-outline" style="flex:1;padding:14px" onclick="closeModal('addProductModal')">Cancel</button>
+</div>
+</div>
 </div>
 
 <!-- ADVERTISE -->
 <div class="modal-overlay" id="advertiseModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('advertiseModal')">✕</button>
-    <h2 class="modal-title">📢 Advertise on Corazon</h2>
-    <p class="modal-sub">Boost your product visibility and reach millions of buyers</p>
-    <div style="display:grid;gap:10px;margin-bottom:20px">
-      <div style="border:1.5px solid var(--gray-200);border-radius:10px;padding:16px;cursor:pointer" id="plan1" onclick="selectPlan(1)">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-          <div><div style="font-weight:700;font-size:14px">🥉 Basic Boost</div><div style="font-size:12px;color:var(--gray-600);margin-top:3px">Homepage banner · 7 days · 5,000 impressions</div></div>
-          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--primary);flex-shrink:0">₦5,000</div>
-        </div>
-      </div>
-      <div style="border:2px solid var(--primary);border-radius:10px;padding:16px;cursor:pointer;background:var(--primary-light);position:relative" id="plan2" onclick="selectPlan(2)">
-        <div style="position:absolute;top:-10px;right:14px;background:var(--primary);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px">POPULAR</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-          <div><div style="font-weight:700;font-size:14px">🥈 Standard Ad</div><div style="font-size:12px;color:var(--gray-600);margin-top:3px">Homepage + Category · 14 days · 20,000 impressions</div></div>
-          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--primary);flex-shrink:0">₦15,000</div>
-        </div>
-      </div>
-      <div style="border:1.5px solid var(--gray-200);border-radius:10px;padding:16px;cursor:pointer" id="plan3" onclick="selectPlan(3)">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-          <div><div style="font-weight:700;font-size:14px">🥇 Premium Feature</div><div style="font-size:12px;color:var(--gray-600);margin-top:3px">Hero banner + Email blast · 30 days · 100K impressions</div></div>
-          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--primary);flex-shrink:0">₦45,000</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group"><label>Product/Service to Advertise</label><input placeholder="What are you advertising?"></div>
-    <div class="form-group"><label>Contact Phone / Email</label><input placeholder="For campaign updates"></div>
-    <button class="btn btn-primary" style="width:100%;padding:14px" onclick="submitAd()">Pay & Start Advertising →</button>
-  </div>
+<div class="modal">
+<button class="modal-close" onclick="closeModal('advertiseModal')">✕</button>
+<h2 class="modal-title">📢 Advertise on Corazon</h2>
+<p class="modal-sub">Boost your product visibility and reach millions of buyers</p>
+<div style="display:grid;gap:10px;margin-bottom:18px">
+<div style="border:1.5px solid var(--gray-200);border-radius:10px;padding:14px;cursor:pointer" id="plan1" onclick="selectPlan(1)">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+<div><div style="font-weight:700;font-size:14px">🥉 Basic Boost</div><div style="font-size:12px;color:var(--gray-600);margin-top:3px">Homepage banner · 7 days · 5,000 impressions</div></div>
+<div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--primary);flex-shrink:0">₦5,000</div>
+</div>
+</div>
+<div style="border:2px solid var(--primary);border-radius:10px;padding:14px;cursor:pointer;background:var(--primary-light);position:relative" id="plan2" onclick="selectPlan(2)">
+<div style="position:absolute;top:-10px;right:14px;background:var(--primary);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px">POPULAR</div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+<div><div style="font-weight:700;font-size:14px">🥈 Standard Ad</div><div style="font-size:12px;color:var(--gray-600);margin-top:3px">Homepage + Category · 14 days · 20,000 impressions</div></div>
+<div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--primary);flex-shrink:0">₦15,000</div>
+</div>
+</div>
+<div style="border:1.5px solid var(--gray-200);border-radius:10px;padding:14px;cursor:pointer" id="plan3" onclick="selectPlan(3)">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+<div><div style="font-weight:700;font-size:14px">🥇 Premium Feature</div><div style="font-size:12px;color:var(--gray-600);margin-top:3px">Hero banner + Email blast · 30 days · 100K impressions</div></div>
+<div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--primary);flex-shrink:0">₦45,000</div>
+</div>
+</div>
+</div>
+<div class="form-group"><label>Product/Service to Advertise</label><input placeholder="What are you advertising?"></div>
+<div class="form-group"><label>Contact Phone / Email</label><input placeholder="For campaign updates"></div>
+<button class="btn btn-primary" style="width:100%;padding:14px" onclick="submitAd()">Pay &amp; Start Advertising →</button>
+</div>
 </div>
 
 <!-- POST JOB -->
 <div class="modal-overlay" id="postJobModal">
-  <div class="modal" style="max-width:600px">
-    <button class="modal-close" onclick="closeModal('postJobModal')">✕</button>
-    <h2 class="modal-title">💼 Post a Job</h2>
-    <p class="modal-sub">Reach thousands of qualified candidates across Nigeria</p>
-    <div class="form-group"><label>Job Title *</label><input id="jTitle" placeholder="e.g. Senior Software Engineer"></div>
-    <div class="form-row">
-      <div class="form-group"><label>Company Name *</label><input id="jCompany" placeholder="Acme Corp"></div>
-      <div class="form-group"><label>Location *</label><input id="jLocation" placeholder="Lagos, Nigeria"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Job Type</label><select id="jType"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Remote</option><option>Internship</option></select></div>
-      <div class="form-group"><label>Industry</label><select id="jIndustry"><option>Technology</option><option>Finance</option><option>Oil & Gas</option><option>Healthcare</option><option>FMCG</option><option>Construction</option><option>Education</option></select></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Min Salary (₦/month)</label><input id="jSalMin" type="number" placeholder="150000"></div>
-      <div class="form-group"><label>Max Salary (₦/month)</label><input id="jSalMax" type="number" placeholder="350000"></div>
-    </div>
-    <div class="form-group"><label>Job Description *</label><textarea id="jDesc" rows="3" placeholder="Role responsibilities, requirements, benefits..."></textarea></div>
-    <div class="form-group"><label>Required Skills (comma separated)</label><input id="jSkills" placeholder="React, Node.js, MongoDB, Agile"></div>
-    <div style="display:flex;gap:10px">
-      <button class="btn btn-green" style="flex:1;padding:14px" onclick="submitJob()">📝 Post Job Free</button>
-      <button class="btn btn-outline" style="flex:1;padding:14px" onclick="closeModal('postJobModal')">Cancel</button>
-    </div>
-  </div>
+<div class="modal" style="max-width:600px">
+<button class="modal-close" onclick="closeModal('postJobModal')">✕</button>
+<h2 class="modal-title">💼 Post a Job</h2>
+<p class="modal-sub">Reach thousands of qualified candidates across Nigeria</p>
+<div class="form-group"><label>Job Title *</label><input id="jTitle" placeholder="e.g. Senior Software Engineer"></div>
+<div class="form-row">
+<div class="form-group"><label>Company Name *</label><input id="jCompany" placeholder="Acme Corp"></div>
+<div class="form-group"><label>Location *</label><input id="jLocation" placeholder="Lagos, Nigeria"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Job Type</label><select id="jType"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Remote</option><option>Internship</option></select></div>
+<div class="form-group"><label>Industry</label><select id="jIndustry"><option>Technology</option><option>Finance</option><option>Oil &amp; Gas</option><option>Healthcare</option><option>FMCG</option><option>Construction</option><option>Education</option></select></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Min Salary (₦/month)</label><input id="jSalMin" type="number" placeholder="150000"></div>
+<div class="form-group"><label>Max Salary (₦/month)</label><input id="jSalMax" type="number" placeholder="350000"></div>
+</div>
+<div class="form-group"><label>Job Description *</label><textarea id="jDesc" rows="3" placeholder="Role responsibilities, requirements, benefits..."></textarea></div>
+<div class="form-group"><label>Required Skills (comma separated)</label><input id="jSkills" placeholder="React, Node.js, MongoDB, Agile"></div>
+<div style="display:flex;gap:10px">
+<button class="btn btn-green" style="flex:1;padding:14px" onclick="submitJob()">📝 Post Job Free</button>
+<button class="btn btn-outline" style="flex:1;padding:14px" onclick="closeModal('postJobModal')">Cancel</button>
+</div>
+</div>
 </div>
 
 <!-- PRODUCT DETAIL -->
 <div class="modal-overlay" id="productDetailModal">
-  <div class="modal" style="max-width:600px">
-    <button class="modal-close" onclick="closeModal('productDetailModal')">✕</button>
-    <div id="productDetailContent"></div>
-  </div>
+<div class="modal" style="max-width:600px">
+<button class="modal-close" onclick="closeModal('productDetailModal')">✕</button>
+<div id="productDetailContent"></div>
+</div>
 </div>
 
 <!-- CART -->
 <div class="overlay-bg" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-sidebar" id="cartSidebar">
-  <div class="cart-header">
-    <span class="cart-title">🛒 Your Cart</span>
-    <button onclick="toggleCart()" style="background:none;border:none;font-size:20px;cursor:pointer;line-height:1">✕</button>
-  </div>
-  <div class="cart-body" id="cartBody">
-    <div id="cartEmpty" style="text-align:center;padding:60px 20px;color:var(--gray-400)">
-      <div style="font-size:56px;margin-bottom:10px">🛒</div>
-      <div style="font-size:15px;font-weight:600">Your cart is empty</div>
-      <div style="font-size:13px;margin-top:5px">Add some products to get started!</div>
-    </div>
-    <div id="cartItems"></div>
-  </div>
-  <div class="cart-footer" id="cartFooter" style="display:none">
-    <div class="cart-total-row"><span>Subtotal:</span><span id="cartSubtotal">₦0</span></div>
-    <div class="cart-total-row"><span>Delivery:</span><span style="color:var(--accent)">Free</span></div>
-    <div class="cart-total-row big" style="margin-bottom:14px"><span>Total:</span><span id="cartTotal">₦0</span></div>
-    <button class="btn btn-primary" style="width:100%;padding:14px" onclick="checkout()">Proceed to Checkout →</button>
-    <button class="btn btn-outline" style="width:100%;margin-top:8px;padding:12px" onclick="toggleCart()">Continue Shopping</button>
-  </div>
+<div class="cart-header">
+<span class="cart-title">🛒 Your Cart</span>
+<button onclick="toggleCart()" style="background:none;border:none;font-size:20px;cursor:pointer;line-height:1;padding:8px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center">✕</button>
+</div>
+<div class="cart-body" id="cartBody">
+<div id="cartEmpty" style="text-align:center;padding:60px 20px;color:var(--gray-400)">
+<div style="font-size:56px;margin-bottom:10px">🛒</div>
+<div style="font-size:15px;font-weight:600">Your cart is empty</div>
+<div style="font-size:13px;margin-top:5px">Add some products to get started!</div>
+</div>
+<div id="cartItems"></div>
+</div>
+<div class="cart-footer" id="cartFooter" style="display:none">
+<div class="cart-total-row"><span>Subtotal:</span><span id="cartSubtotal">₦0</span></div>
+<div class="cart-total-row"><span>Delivery:</span><span style="color:var(--accent)">Free</span></div>
+<div class="cart-total-row big" style="margin-bottom:14px"><span>Total:</span><span id="cartTotal">₦0</span></div>
+<button class="btn btn-primary" style="width:100%;padding:14px" onclick="checkout()">Proceed to Checkout →</button>
+<button class="btn btn-outline" style="width:100%;margin-top:8px;padding:12px" onclick="toggleCart()">Continue Shopping</button>
+</div>
 </div>
 
 <!-- TOAST -->
 <div class="toast" id="toast">
-  <span id="toastIcon">✅</span>
-  <span id="toastMsg">Action successful!</span>
+<span id="toastIcon">✅</span>
+<span id="toastMsg">Action successful!</span>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <span class="logo">Corazon<span>.</span></span>
-      <p>Nigeria's leading online marketplace. Buy, sell products, and find your next career opportunity — all in one place.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Marketplace</h4>
-      <ul>
-        <li><a href="#">Electronics</a></li>
-        <li><a href="#">Fashion</a></li>
-        <li><a href="#">Home & Living</a></li>
-        <li><a href="#">Automobiles</a></li>
-        <li><a href="#">Agriculture</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Sellers</h4>
-      <ul>
-        <li><a href="#" onclick="showModal('registerModal')">Register as Seller</a></li>
-        <li><a href="#" onclick="showSection('seller')">Seller Dashboard</a></li>
-        <li><a href="#" onclick="showModal('addProductModal')">Add Product</a></li>
-        <li><a href="#" onclick="showModal('advertiseModal')">Advertise</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Recruitment</h4>
-      <ul>
-        <li><a href="#" onclick="showSection('jobs')">Browse Jobs</a></li>
-        <li><a href="#" onclick="showModal('postJobModal')">Post a Job</a></li>
-        <li><a href="#" onclick="showModal('registerModal')">Register Employer</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    © 2025 Corazon Marketplace Ltd. All rights reserved. · Privacy Policy · Terms of Service · Made with ❤️ in Nigeria
-  </div>
+<div class="footer-top">
+<div class="footer-brand">
+<span class="logo">Corazon<span>.</span></span>
+<p>Nigeria's leading online marketplace. Buy, sell products, and find your next career opportunity — all in one place.</p>
+</div>
+<div class="footer-col">
+<h4>Marketplace</h4>
+<ul>
+<li><a href="#">Electronics</a></li>
+<li><a href="#">Fashion</a></li>
+<li><a href="#">Home &amp; Living</a></li>
+<li><a href="#">Automobiles</a></li>
+<li><a href="#">Agriculture</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Sellers</h4>
+<ul>
+<li><a href="#" onclick="showModal('registerModal')">Register as Seller</a></li>
+<li><a href="#" onclick="showSection('seller')">Seller Dashboard</a></li>
+<li><a href="#" onclick="showModal('addProductModal')">Add Product</a></li>
+<li><a href="#" onclick="showModal('advertiseModal')">Advertise</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Recruitment</h4>
+<ul>
+<li><a href="#" onclick="showSection('jobs')">Browse Jobs</a></li>
+<li><a href="#" onclick="showModal('postJobModal')">Post a Job</a></li>
+<li><a href="#" onclick="showModal('registerModal')">Register Employer</a></li>
+<li><a href="#">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+© 2025 Corazon Marketplace Ltd. All rights reserved. · Privacy Policy · Terms of Service · Made with ❤️ in Nigeria
+</div>
 </footer>
 
 <!-- MOBILE BOTTOM BAR -->
 <div class="mobile-bottom-bar">
-  <div class="mbb-inner">
-    <div class="mbb-item active" onclick="showSection('home');setMbbActive(this)"><span class="mbb-icon">🏠</span><span class="mbb-label">Home</span></div>
-    <div class="mbb-item" onclick="showSection('jobs');setMbbActive(this)"><span class="mbb-icon">💼</span><span class="mbb-label">Jobs</span></div>
-    <div class="mbb-item" onclick="showModal('addProductModal')"><span class="mbb-icon" style="background:var(--primary);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;margin-top:-8px;font-size:20px">＋</span><span class="mbb-label">Sell</span></div>
-    <div class="mbb-item" onclick="toggleCart()"><span class="mbb-icon">🛒</span><span class="mbb-badge" id="mbbCartCount" style="display:none">0</span><span class="mbb-label">Cart</span></div>
-    <div class="mbb-item" onclick="showModal('loginModal')"><span class="mbb-icon">👤</span><span class="mbb-label">Account</span></div>
-  </div>
+<div class="mbb-inner">
+<div class="mbb-item active" onclick="showSection('home');setMbbActive(this)"><span class="mbb-icon">🏠</span><span class="mbb-label">Home</span></div>
+<div class="mbb-item" onclick="showSection('jobs');setMbbActive(this)"><span class="mbb-icon">💼</span><span class="mbb-label">Jobs</span></div>
+<div class="mbb-item" onclick="showModal('addProductModal')"><span class="mbb-icon" style="background:var(--primary);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;margin-top:-10px;font-size:22px">＋</span><span class="mbb-label">Sell</span></div>
+<div class="mbb-item" onclick="toggleCart()"><span class="mbb-icon">🛒</span><span class="mbb-badge" id="mbbCartCount" style="display:none">0</span><span class="mbb-label">Cart</span></div>
+<div class="mbb-item" onclick="showModal('loginModal')"><span class="mbb-icon">👤</span><span class="mbb-label">Account</span></div>
+</div>
 </div>
 
 <script>
 let cart = [], products = [], jobs = [], selectedEmoji = '📦';
 
 const sampleProducts = [
-  { id:1, name:'iPhone 15 Pro Max 256GB', price:950000, oldPrice:1100000, emoji:'📱', seller:'TechZone NG', rating:4.8, reviews:234, badges:['hot'] },
-  { id:2, name:'MacBook Air M3 Chip', price:1250000, oldPrice:0, emoji:'💻', seller:'AppleHub Lagos', rating:4.9, reviews:89, badges:['new'] },
-  { id:3, name:'Samsung 4K Smart TV 55"', price:380000, oldPrice:450000, emoji:'📺', seller:'ElectroMart', rating:4.6, reviews:156, badges:['sale'] },
-  { id:4, name:'Sony WH-1000XM5 Headphones', price:145000, oldPrice:0, emoji:'🎧', seller:'SoundCity', rating:4.7, reviews:312, badges:[] },
-  { id:5, name:'Nike Air Force 1 White', price:55000, oldPrice:70000, emoji:'👟', seller:'SneakerHub NG', rating:4.5, reviews:445, badges:['sale'] },
-  { id:6, name:'DSLR Camera Canon EOS R50', price:420000, oldPrice:0, emoji:'📷', seller:'PhotoPro NG', rating:4.8, reviews:67, badges:['new'] },
-  { id:7, name:'Leather Office Chair', price:85000, oldPrice:110000, emoji:'🪑', seller:'FurniturePlus', rating:4.4, reviews:188, badges:['sale'] },
-  { id:8, name:"Men's Agbada Suit Set", price:35000, oldPrice:0, emoji:'👘', seller:'FashionHaus NG', rating:4.6, reviews:92, badges:['hot'] },
-  { id:9, name:'Portable Solar Generator', price:220000, oldPrice:280000, emoji:'⚡', seller:'GreenPower NG', rating:4.7, reviews:143, badges:['hot'] },
-  { id:10, name:'Gas Cooker 4-Burner', price:68000, oldPrice:80000, emoji:'🍳', seller:'KitchenWorld', rating:4.5, reviews:267, badges:['sale'] },
+{ id:1, name:'iPhone 15 Pro Max 256GB', price:950000, oldPrice:1100000, emoji:'📱', seller:'TechZone NG', rating:4.8, reviews:234, badges:['hot'] },
+{ id:2, name:'MacBook Air M3 Chip', price:1250000, oldPrice:0, emoji:'💻', seller:'AppleHub Lagos', rating:4.9, reviews:89, badges:['new'] },
+{ id:3, name:'Samsung 4K Smart TV 55"', price:380000, oldPrice:450000, emoji:'📺', seller:'ElectroMart', rating:4.6, reviews:156, badges:['sale'] },
+{ id:4, name:'Sony WH-1000XM5 Headphones', price:145000, oldPrice:0, emoji:'🎧', seller:'SoundCity', rating:4.7, reviews:312, badges:[] },
+{ id:5, name:'Nike Air Force 1 White', price:55000, oldPrice:70000, emoji:'👟', seller:'SneakerHub NG', rating:4.5, reviews:445, badges:['sale'] },
+{ id:6, name:'DSLR Camera Canon EOS R50', price:420000, oldPrice:0, emoji:'📷', seller:'PhotoPro NG', rating:4.8, reviews:67, badges:['new'] },
+{ id:7, name:'Leather Office Chair', price:85000, oldPrice:110000, emoji:'🪑', seller:'FurniturePlus', rating:4.4, reviews:188, badges:['sale'] },
+{ id:8, name:"Men's Agbada Suit Set", price:35000, oldPrice:0, emoji:'👘', seller:'FashionHaus NG', rating:4.6, reviews:92, badges:['hot'] },
+{ id:9, name:'Portable Solar Generator', price:220000, oldPrice:280000, emoji:'⚡', seller:'GreenPower NG', rating:4.7, reviews:143, badges:['hot'] },
+{ id:10, name:'Gas Cooker 4-Burner', price:68000, oldPrice:80000, emoji:'🍳', seller:'KitchenWorld', rating:4.5, reviews:267, badges:['sale'] },
 ];
 
 const sampleJobs = [
-  { id:1, title:'Senior Software Engineer', company:'Flutterwave', location:'Lagos', type:'Full-time', salary:'₦800K–₦1.2M', skills:['React','Node.js','AWS'], logo:'💳', date:'2 days ago' },
-  { id:2, title:'Digital Marketing Manager', company:'Dangote Group', location:'Abuja', type:'Full-time', salary:'₦450K–₦650K', skills:['SEO','Meta Ads','Analytics'], logo:'🏭', date:'1 day ago' },
-  { id:3, title:'Petroleum Engineer', company:'Shell Nigeria', location:'Port Harcourt', type:'Full-time', salary:'₦1.5M–₦2M', skills:['Reservoir Eng','AutoCAD'], logo:'🛢️', date:'3 days ago' },
-  { id:4, title:'UX/UI Designer', company:'Paystack', location:'Lagos (Remote)', type:'Remote', salary:'₦500K–₦750K', skills:['Figma','Prototyping'], logo:'💠', date:'Today' },
-  { id:5, title:'Financial Analyst', company:'Zenith Bank', location:'Lagos', type:'Full-time', salary:'₦350K–₦500K', skills:['Excel','SAP'], logo:'🏦', date:'5 days ago' },
-  { id:6, title:'Civil Engineer (Site)', company:'Julius Berger', location:'Abuja', type:'Contract', salary:'₦600K–₦900K', skills:['AutoCAD','Civil 3D'], logo:'🏗️', date:'1 week ago' },
+{ id:1, title:'Senior Software Engineer', company:'Flutterwave', location:'Lagos', type:'Full-time', salary:'₦800K–₦1.2M', skills:['React','Node.js','AWS'], logo:'💳', date:'2 days ago' },
+{ id:2, title:'Digital Marketing Manager', company:'Dangote Group', location:'Abuja', type:'Full-time', salary:'₦450K–₦650K', skills:['SEO','Meta Ads','Analytics'], logo:'🏭', date:'1 day ago' },
+{ id:3, title:'Petroleum Engineer', company:'Shell Nigeria', location:'Port Harcourt', type:'Full-time', salary:'₦1.5M–₦2M', skills:['Reservoir Eng','AutoCAD'], logo:'🛢️', date:'3 days ago' },
+{ id:4, title:'UX/UI Designer', company:'Paystack', location:'Lagos (Remote)', type:'Remote', salary:'₦500K–₦750K', skills:['Figma','Prototyping'], logo:'💠', date:'Today' },
+{ id:5, title:'Financial Analyst', company:'Zenith Bank', location:'Lagos', type:'Full-time', salary:'₦350K–₦500K', skills:['Excel','SAP'], logo:'🏦', date:'5 days ago' },
+{ id:6, title:'Civil Engineer (Site)', company:'Julius Berger', location:'Abuja', type:'Contract', salary:'₦600K–₦900K', skills:['AutoCAD','Civil 3D'], logo:'🏗️', date:'1 week ago' },
 ];
 
 function showSection(name) {
@@ -1121,7 +1161,9 @@ function showModal(id) { document.getElementById(id).classList.add('open'); docu
 function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
 
 document.querySelectorAll('.modal-overlay').forEach(o => {
-  o.addEventListener('click', function(e) { if(e.target===this){ this.classList.remove('open'); document.body.style.overflow=''; }});
+  o.addEventListener('click', function(e) {
+    if (e.target === this) { this.classList.remove('open'); document.body.style.overflow=''; }
+  });
 });
 
 function switchTab(el, tabId) {
@@ -1140,7 +1182,7 @@ function showToast(msg, icon='✅') {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-function esc(str) { return String(str).replace(/'/g,"&#39;").replace(/"/g,'&quot;'); }
+function esc(str) { return String(str).replace(/'/g,"\u2019").replace(/"/g,'\u201C'); }
 
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
@@ -1184,7 +1226,7 @@ function renderJobs(containerId, count) {
       <div class="job-tags"><span class="job-tag">⏱ ${j.type}</span>${(j.skills||[]).map(s=>`<span class="job-tag">${s}</span>`).join('')}</div>
       <div class="job-footer">
         <span class="job-salary">${j.salary}/mo</span>
-        <div style="display:flex;align-items:center;gap:8px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <span class="job-date">📅 ${j.date}</span>
           <button class="btn btn-green btn-sm" onclick="showToast('Application sent to ${esc(j.company)}! 🎉','💼')">Apply</button>
         </div>
@@ -1197,11 +1239,14 @@ function renderSellerTable() {
   const list = products.length > 0 ? products : sampleProducts.slice(0,4);
   tbody.innerHTML = list.map(p => `
     <tr>
-      <td><span style="font-size:18px;margin-right:6px">${p.emoji}</span>${esc(p.name)}</td>
+      <td><span style="font-size:16px;margin-right:5px">${p.emoji}</span>${esc(p.name)}</td>
       <td style="font-weight:700;color:var(--primary);white-space:nowrap">₦${Number(p.price).toLocaleString()}</td>
       <td>${p.stock||Math.floor(Math.random()*50+5)}</td>
       <td><span class="status-badge ${Math.random()>.3?'status-active':'status-pending'}">${Math.random()>.3?'Active':'Pending'}</span></td>
-      <td style="white-space:nowrap"><button class="btn btn-outline btn-sm" style="margin-right:4px" onclick="showModal('addProductModal')">Edit</button><button class="btn btn-sm" style="background:var(--red);color:#fff" onclick="showToast('Removed','🗑️')">✕</button></td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-outline btn-sm" style="margin-right:4px" onclick="showModal('addProductModal')">Edit</button>
+        <button class="btn btn-sm" style="background:var(--red);color:#fff" onclick="showToast('Removed','🗑️')">✕</button>
+      </td>
     </tr>`).join('');
 }
 
@@ -1238,7 +1283,7 @@ function updateCart() {
   const footerEl = document.getElementById('cartFooter');
   if (!cart.length) { emptyEl.style.display='block'; itemsEl.innerHTML=''; footerEl.style.display='none'; return; }
   emptyEl.style.display='none'; footerEl.style.display='block';
-  itemsEl.innerHTML = cart.map((item,idx)=>`
+  itemsEl.innerHTML = cart.map((item,idx) => `
     <div class="cart-item">
       <div class="cart-item-icon">${item.emoji}</div>
       <div class="cart-item-info">
@@ -1246,9 +1291,9 @@ function updateCart() {
         <div class="cart-item-price">₦${Number(item.price).toLocaleString()}</div>
         <div class="cart-item-qty">
           <button class="qty-btn" onclick="changeQty(${idx},-1)">−</button>
-          <span style="font-weight:700;font-size:14px;min-width:20px;text-align:center">${item.qty}</span>
+          <span style="font-weight:700;font-size:14px;min-width:22px;text-align:center">${item.qty}</span>
           <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
-          <button onclick="removeFromCart(${idx})" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:12px;margin-left:8px">Remove</button>
+          <button onclick="removeFromCart(${idx})" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:12px;margin-left:8px;padding:4px">Remove</button>
         </div>
       </div>
       <div style="font-weight:700;font-size:13px;color:var(--secondary);flex-shrink:0">₦${Number(item.price*item.qty).toLocaleString()}</div>
@@ -1260,7 +1305,10 @@ function updateCart() {
 
 function changeQty(idx,delta){ cart[idx].qty+=delta; if(cart[idx].qty<=0) cart.splice(idx,1); updateCart(); }
 function removeFromCart(idx){ cart.splice(idx,1); updateCart(); }
-function toggleCart(){ document.getElementById('cartSidebar').classList.toggle('open'); document.getElementById('cartOverlay').classList.toggle('open'); }
+function toggleCart(){
+  document.getElementById('cartSidebar').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
 
 function checkout(){
   showToast('Redirecting to checkout... 🔒','🔒');
@@ -1316,19 +1364,21 @@ function selectPlan(n){
 }
 
 function showProductDetail(id,name,price,emoji,seller,rating,reviews){
-  document.getElementById('productDetailContent').innerHTML=`
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
-      <div style="background:var(--gray-50);border-radius:12px;min-height:200px;display:flex;align-items:center;justify-content:center;font-size:90px">${emoji}</div>
+  const isMobile = window.innerWidth <= 480;
+  const gridStyle = isMobile ? 'grid-template-columns:1fr' : 'grid-template-columns:1fr 1fr';
+  document.getElementById('productDetailContent').innerHTML = `
+    <div class="product-detail-grid" style="display:grid;${gridStyle};gap:18px;align-items:start">
+      <div style="background:var(--gray-50);border-radius:12px;min-height:180px;display:flex;align-items:center;justify-content:center;font-size:80px">${emoji}</div>
       <div>
-        <h2 style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:6px">${name}</h2>
+        <h2 style="font-family:'Syne',sans-serif;font-size:19px;font-weight:700;margin-bottom:5px">${name}</h2>
         <div style="font-size:12px;color:var(--gray-400);margin-bottom:10px">by ${seller}</div>
-        <div style="display:flex;align-items:center;gap:5px;margin-bottom:14px"><span class="star">★★★★★</span><span style="font-weight:600">${rating}</span><span style="color:var(--gray-400)">(${reviews})</span></div>
-        <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--primary);margin-bottom:16px">₦${Number(price).toLocaleString()}</div>
+        <div style="display:flex;align-items:center;gap:5px;margin-bottom:12px"><span class="star">★★★★★</span><span style="font-weight:600">${rating}</span><span style="color:var(--gray-400)">(${reviews})</span></div>
+        <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--primary);margin-bottom:14px">₦${Number(price).toLocaleString()}</div>
         <button class="btn btn-primary" style="width:100%;padding:13px;margin-bottom:8px" onclick="addToCart('${esc(name)}',${price},'${emoji}');closeModal('productDetailModal')">🛒 Add to Cart</button>
         <button class="btn btn-outline" style="width:100%;padding:11px" onclick="showToast('Added to wishlist!','❤️')">♡ Save to Wishlist</button>
       </div>
     </div>
-    <div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--gray-200)">
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-200)">
       <h4 style="font-weight:700;margin-bottom:7px">Product Details</h4>
       <p style="font-size:14px;color:var(--gray-600);line-height:1.7">Verified Corazon seller. Quality guaranteed with buyer protection on all orders. Free returns within 7 days.</p>
     </div>`;
@@ -1341,14 +1391,11 @@ function doSearch(){
   showToast(`Searching for "${q}"...`,'🔍');
 }
 
-// Mobile product detail: stack columns
-function checkMobileDetail(){
-  const isMobile = window.innerWidth <= 480;
-  const det = document.querySelector('#productDetailContent > div');
-  if(det) det.style.gridTemplateColumns = isMobile ? '1fr' : '1fr 1fr';
-}
-document.getElementById('productDetailModal').addEventListener('click', checkMobileDetail);
-window.addEventListener('resize', checkMobileDetail);
+// Update product detail layout on resize
+window.addEventListener('resize', () => {
+  const det = document.querySelector('.product-detail-grid');
+  if (det) det.style.gridTemplateColumns = window.innerWidth <= 480 ? '1fr' : '1fr 1fr';
+});
 
 renderProducts();
 renderJobs('homeJobsGrid', 3);
