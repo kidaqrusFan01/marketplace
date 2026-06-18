@@ -1238,27 +1238,23 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".category-slide");
 
-    const slides = document.querySelectorAll('.category-slide');
+    if (!slides.length) return;
+
     let current = 0;
 
-    function showSlide(index){
-        slides.forEach(slide =>
-            slide.classList.remove('active')
-        );
+    setInterval(function () {
+        slides[current].classList.remove("active");
 
-        slides[index].classList.add('active');
-    }
-
-    setInterval(() => {
         current++;
-        if(current >= slides.length){
+        if (current >= slides.length) {
             current = 0;
         }
-        showSlide(current);
-    }, 4000);
 
+        slides[current].classList.add("active");
+    }, 4000);
 });
 
 
