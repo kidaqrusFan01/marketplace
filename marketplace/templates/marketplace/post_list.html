@@ -480,54 +480,96 @@
     </div>
 
     <!-- CATEGORIES — with images -->
+
     <div class="section">
-      <div class="section-header">
+    <div class="section-header">
         <h2 class="section-title">Shop by <span>Category</span></h2>
-      </div>
-      <div class="cats-grid">
-        <div class="cat-card" onclick="go('category:electronics')">
-          <!-- Replace src with your electronics category image -->
-          <img src="{% static 'img/img8.jpg' %}" alt="Electronics" class="cat-img" />
-          <div class="cat-icon">📱</div>
-          <div class="cat-name">Electronics</div>
-        </div>
-        <div class="cat-card" onclick="go('category:fashion')">
-          <img src="{% static 'img/img7.jpg' %}" alt="Fashion" class="cat-img" />
-          <div class="cat-icon">👗</div>
-          <div class="cat-name">Fashion</div>
-        </div>
-        <div class="cat-card" onclick="go('category:home-living')">
-          <img src="{% static 'img/img9.jpg' %}" alt="Home & Living" class="cat-img" />
-          <div class="cat-icon">🏡</div>
-          <div class="cat-name">Home & Living</div>
-        </div>
-        <div class="cat-card" onclick="go('category:beauty')">
-          <img src="{% static 'img/1img10.jpg' %}" alt="Beauty" class="cat-img" />
-          <div class="cat-icon">💄</div>
-          <div class="cat-name">Beauty</div>
-        </div>
-        <div class="cat-card" onclick="go('category:automobiles')">
-          <img src="{% static 'img/img11.jpg' %}" alt="digital" class="cat-img" />
-          <div class="cat-icon">🚗</div>
-          <div class="cat-name">digital cards</div>
-        </div>
-        <div class="cat-card" onclick="go('category:books')">
-          <img src="{% static 'img/img12.jpg' %}" alt="Books" class="cat-img" />
-          <div class="cat-icon">📚</div>
-          <div class="cat-name">Bookings</div>
-        </div>
-        <div class="cat-card" onclick="go('category:agriculture')">
-          <img src="{% static 'img/img13.jpg' %}" alt="Agriculture" class="cat-img" />
-          <div class="cat-icon">🌿</div>
-          <div class="cat-name">Agriculture</div>
-        </div>
-        <div class="cat-card" onclick="go('category:services')">
-          <img src="https://placehold.co/140x90/FDF3DC/C9A84C?text=Services" alt="Services" class="cat-img" />
-          <div class="cat-icon">🔧</div>
-          <div class="cat-name">Services</div>
-        </div>
-      </div>
     </div>
+
+    <div class="category-banner-slider">
+
+        <div class="category-slide active"
+             onclick="go('category:electronics')">
+            <img src="{% static 'img/img8.jpg' %}" alt="Electronics">
+            <div class="slide-overlay">
+                <div class="slide-icon">📱</div>
+                <h3>Electronics</h3>
+                <p>Phones, Laptops & Gadgets</p>
+            </div>
+        </div>
+
+        <div class="category-slide"
+             onclick="go('category:fashion')">
+            <img src="{% static 'img/img7.jpg' %}" alt="Fashion">
+            <div class="slide-overlay">
+                <div class="slide-icon">👗</div>
+                <h3>Fashion</h3>
+                <p>Trending Styles & Accessories</p>
+            </div>
+        </div>
+
+        <div class="category-slide"
+             onclick="go('category:home-living')">
+            <img src="{% static 'img/img9.jpg' %}" alt="Home">
+            <div class="slide-overlay">
+                <div class="slide-icon">🏡</div>
+                <h3>Home & Living</h3>
+                <p>Furniture & Home Essentials</p>
+            </div>
+        </div>
+
+        <div class="category-slide"
+             onclick="go('category:beauty')">
+            <img src="{% static 'img/1img10.jpg' %}" alt="Beauty">
+            <div class="slide-overlay">
+                <div class="slide-icon">💄</div>
+                <h3>Beauty</h3>
+                <p>Makeup & Personal Care</p>
+            </div>
+        </div>
+
+        <div class="category-slide"
+             onclick="go('category:automobiles')">
+            <img src="{% static 'img/img11.jpg' %}" alt="Digital">
+            <div class="slide-overlay">
+                <div class="slide-icon">🚗</div>
+                <h3>Digital Cards</h3>
+                <p>Gift Cards & Digital Products</p>
+            </div>
+        </div>
+
+        <div class="category-slide"
+             onclick="go('category:books')">
+            <img src="{% static 'img/img12.jpg' %}" alt="Bookings">
+            <div class="slide-overlay">
+                <div class="slide-icon">📚</div>
+                <h3>Bookings</h3>
+                <p>Reserve & Book Services</p>
+            </div>
+        </div>
+
+        <div class="category-slide"
+             onclick="go('category:agriculture')">
+            <img src="{% static 'img/img13.jpg' %}" alt="Agriculture">
+            <div class="slide-overlay">
+                <div class="slide-icon">🌿</div>
+                <h3>Agriculture</h3>
+                <p>Farm Produce & Equipment</p>
+            </div>
+        </div>
+
+        <div class="category-slide"
+             onclick="go('category:services')">
+            <img src="{% static 'img/img8.jpg' %}" alt="Services">
+            <div class="slide-overlay">
+                <div class="slide-icon">🔧</div>
+                <h3>Services</h3>
+                <p>Professional & Local Services</p>
+            </div>
+        </div>
+
+    </div>
+</div>
 
     <!-- FEATURED BANNERS — with images -->
     <div class="section" style="margin-top:0">
@@ -1195,6 +1237,31 @@
         reader.readAsDataURL(file);
       }
     }
+
+    document.addEventListener('DOMContentLoaded', function(){
+
+    const slides = document.querySelectorAll('.category-slide');
+    let current = 0;
+
+    function showSlide(index){
+        slides.forEach(slide =>
+            slide.classList.remove('active')
+        );
+
+        slides[index].classList.add('active');
+    }
+
+    setInterval(() => {
+        current++;
+        if(current >= slides.length){
+            current = 0;
+        }
+        showSlide(current);
+    }, 4000);
+
+});
+
+
   </script>
 
   <script src="{% static 'js/app.js' %}"></script>
