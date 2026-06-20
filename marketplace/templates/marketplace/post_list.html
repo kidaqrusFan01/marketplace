@@ -486,85 +486,59 @@
         <h2 class="section-title">Shop by <span>Category</span></h2>
     </div>
 
-    <div class="category-banner-slider">
+    <div class="category-carousel">
 
-        <div class="category-slide active"
-             onclick="go('category:electronics')">
+        <div class="category-card" onclick="go('category:electronics')">
             <img src="{% static 'img/img8.jpg' %}" alt="Electronics">
-            <div class="slide-overlay">
-                <div class="slide-icon">📱</div>
+            <div class="category-overlay">
+                <div class="category-icon">📱</div>
                 <h3>Electronics</h3>
                 <p>Phones, Laptops & Gadgets</p>
             </div>
         </div>
 
-        <div class="category-slide"
-             onclick="go('category:fashion')">
+        <div class="category-card" onclick="go('category:fashion')">
             <img src="{% static 'img/img7.jpg' %}" alt="Fashion">
-            <div class="slide-overlay">
-                <div class="slide-icon">👗</div>
+            <div class="category-overlay">
+                <div class="category-icon">👗</div>
                 <h3>Fashion</h3>
                 <p>Trending Styles & Accessories</p>
             </div>
         </div>
 
-        <div class="category-slide"
-             onclick="go('category:home-living')">
+        <div class="category-card" onclick="go('category:home-living')">
             <img src="{% static 'img/img9.jpg' %}" alt="Home">
-            <div class="slide-overlay">
-                <div class="slide-icon">🏡</div>
+            <div class="category-overlay">
+                <div class="category-icon">🏡</div>
                 <h3>Home & Living</h3>
                 <p>Furniture & Home Essentials</p>
             </div>
         </div>
 
-        <div class="category-slide"
-             onclick="go('category:beauty')">
+        <div class="category-card" onclick="go('category:beauty')">
             <img src="{% static 'img/1img10.jpg' %}" alt="Beauty">
-            <div class="slide-overlay">
-                <div class="slide-icon">💄</div>
+            <div class="category-overlay">
+                <div class="category-icon">💄</div>
                 <h3>Beauty</h3>
                 <p>Makeup & Personal Care</p>
             </div>
         </div>
 
-        <div class="category-slide"
-             onclick="go('category:automobiles')">
-            <img src="{% static 'img/img11.jpg' %}" alt="Digital">
-            <div class="slide-overlay">
-                <div class="slide-icon">🚗</div>
+        <div class="category-card" onclick="go('category:automobiles')">
+            <img src="{% static 'img/img11.jpg' %}" alt="Digital Cards">
+            <div class="category-overlay">
+                <div class="category-icon">💳</div>
                 <h3>Digital Cards</h3>
                 <p>Gift Cards & Digital Products</p>
             </div>
         </div>
 
-        <div class="category-slide"
-             onclick="go('category:books')">
+        <div class="category-card" onclick="go('category:books')">
             <img src="{% static 'img/img12.jpg' %}" alt="Bookings">
-            <div class="slide-overlay">
-                <div class="slide-icon">📚</div>
+            <div class="category-overlay">
+                <div class="category-icon">📚</div>
                 <h3>Bookings</h3>
                 <p>Reserve & Book Services</p>
-            </div>
-        </div>
-
-        <div class="category-slide"
-             onclick="go('category:agriculture')">
-            <img src="{% static 'img/img13.jpg' %}" alt="Agriculture">
-            <div class="slide-overlay">
-                <div class="slide-icon">🌿</div>
-                <h3>Agriculture</h3>
-                <p>Farm Produce & Equipment</p>
-            </div>
-        </div>
-
-        <div class="category-slide"
-             onclick="go('category:services')">
-            <img src="{% static 'img/img8.jpg' %}" alt="Services">
-            <div class="slide-overlay">
-                <div class="slide-icon">🔧</div>
-                <h3>Services</h3>
-                <p>Professional & Local Services</p>
             </div>
         </div>
 
@@ -1238,25 +1212,33 @@
       }
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll(".category-slide");
+   document.addEventListener('DOMContentLoaded', function(){
 
-    if (!slides.length) return;
+    const carousel = document.querySelector('.category-carousel');
 
-    let current = 0;
+    if(!carousel) return;
 
-    setInterval(function () {
-        slides[current].classList.remove("active");
+    setInterval(function(){
 
-        current++;
-        if (current >= slides.length) {
-            current = 0;
+        carousel.scrollBy({
+            left:300,
+            behavior:'smooth'
+        });
+
+        if(
+            carousel.scrollLeft +
+            carousel.clientWidth >=
+            carousel.scrollWidth - 20
+        ){
+            carousel.scrollTo({
+                left:0,
+                behavior:'smooth'
+            });
         }
 
-        slides[current].classList.add("active");
-    }, 4000);
-});
+    },4000);
 
+});
 
   </script>
 
